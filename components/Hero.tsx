@@ -72,10 +72,10 @@ export const Hero: React.FC = () => {
                 <div className="relative w-fit">
                     <motion.h1 
                       variants={itemVariants}
-                      className="text-6xl sm:text-8xl md:text-[10rem] leading-[0.85] font-display font-bold uppercase tracking-tighter break-words select-none relative z-20 animate-flicker"
+                      className="text-6xl sm:text-8xl md:text-[10rem] leading-[0.85] font-display font-bold uppercase tracking-tighter break-words select-none relative z-20"
                     >
-                      <span className="glitch" data-text="Rajeet">Rajeet</span><br />
-                      <span className="glitch text-transparent bg-clip-text bg-gradient-to-r from-accent via-accent to-white drop-shadow-[0_0_20px_rgba(76,169,255,0.4)]" data-text="Nair">Nair</span>
+                      <span>Rajeet</span><br />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-accent to-white drop-shadow-[0_0_20px_rgba(76,169,255,0.4)]">Nair</span>
                     </motion.h1>
                    
                    {/* QR Code Resume Trigger */}

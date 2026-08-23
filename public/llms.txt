@@ -1,0 +1,26 @@
+# Rajeet Nair — AI Engineer & Full-Stack Developer
+
+Mumbai, India (Remote). Builds production-grade AI-integrated systems for manufacturing: GenAI, RAG pipelines, LLM agents, OCR, workflow automation.
+
+## Contact
+- Email: rajeet9653@gmail.com
+- GitHub: https://github.com/rajeetcodeN
+- LinkedIn: https://linkedin.com/in/rajeet-nair
+
+## Current Role
+AI Software Developer at Digital Biz Tech (Apr 2025 – Present). Building RAG interfaces, document-matching systems, social media automation agents, OCR invoice processing, ML warehouse optimization. Python, LangChain, n8n, Supabase, React.
+
+## Key Achievements
+- 2x n8n Verified Creator, Top 30 globally ranked, 35+ published workflow templates
+- 15+ certifications: OCI GenAI Professional (2024 & 2025), Oracle Multicloud Architect, Oracle AI Vector Search, Salesforce Agentforce Specialist, n8n Certified, NVIDIA CUDA, DataCamp AI Engineer
+- B.E. Computer Engineering, Mumbai University — First Class, Rank 3rd in college
+
+## Featured Projects
+1. Multimodal Blueprint Vision AI — Gemini/Mistral vision extraction of GD&T, ISO tolerances from engineering drawings; privacy redaction pipeline; DIN/ISO rules engine.
+2. AI RFQ & Quote Estimation Platform — blueprint OCR to structured quotes, EN/DE bilingual, PDF export.
+3. Manufacturing Capacity Planning SaaS — drag-and-drop Gantt engine, finite capacity scheduling, multi-tenant Supabase RLS.
+4. Athletix — hybrid multi-LLM performance platform for elite athletes (Gemini + Mistral).
+5. Enterprise Multi-RAG + OCR — document intelligence with Qdrant/pgvector/Pinecone semantic search.
+
+## Core Stack
+Python · FastAPI · LangChain · LangGraph · React · TypeScript · Supabase · PostgreSQL · Qdrant · pgvector · Pinecone · Oracle Vector · n8n · Make · AWS S3 · Vercel

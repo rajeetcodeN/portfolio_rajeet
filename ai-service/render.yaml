@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: portfolio-edge-llm
+    runtime: node
+    plan: free            # 0.1 vCPU / 512 MB — fits Qwen2.5-0.5B Q4 via mmap
+    region: singapore     # closest to Mumbai visitors; change as needed
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: ALLOWED_ORIGIN
+        value: https://rajeetnair.dev
+      - key: MODEL_URL
+        value: https://huggingface.co/bartowski/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf

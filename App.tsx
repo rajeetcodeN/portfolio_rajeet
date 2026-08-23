@@ -98,10 +98,14 @@ function App() {
           {/* WebGL Breathing Gradient Background */}
           <NeatBackground />
 
-          <div className="fixed inset-0 bg-noise z-50 mix-blend-overlay pointer-events-none opacity-40"></div>
+          {/* Global Muted Neon Grid Overlay Across All Pages */}
+          <div className="fixed inset-0 bg-cyber-grid z-[1] pointer-events-none opacity-50"></div>
+          <div className="fixed inset-0 bg-radial-vignette z-[2] pointer-events-none"></div>
+
+          <div className="fixed inset-0 bg-noise z-50 mix-blend-overlay pointer-events-none opacity-30"></div>
 
           {/* Cyberpunk CRT Layer */}
-          <div className="fixed inset-0 scanlines-overlay z-[60] pointer-events-none opacity-30"></div>
+          <div className="fixed inset-0 scanlines-overlay z-[60] pointer-events-none opacity-20"></div>
           
           <ScrollToTop />
           <Navbar onOpenTerminal={() => setIsChatOpen(true)} />

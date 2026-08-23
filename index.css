@@ -87,8 +87,27 @@
   background: radial-gradient(circle at 50% 50%, rgba(5, 5, 5, 0.1) 0%, rgba(5, 5, 5, 0.9) 100%);
 }
 
+/* Motion.dev Inspired Muted Animated Grid */
+.bg-grid-motion-muted {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px), 
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@keyframes slow-grid-shimmer {
+  0% { opacity: 0.2; transform: translateY(-10%); }
+  50% { opacity: 0.5; transform: translateY(10%); }
+  100% { opacity: 0.2; transform: translateY(-10%); }
+}
+
+.animate-grid-shimmer {
+  animation: slow-grid-shimmer 14s ease-in-out infinite alternate;
+}
+
 .bg-micro-metal {
   background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: 4px 4px;
 }
+
 

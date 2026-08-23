@@ -30,6 +30,10 @@ export const Section: React.FC<SectionProps> = ({ id, title, children, className
 
   return (
     <section id={id} ref={sectionRef} className={`w-full relative ${className}`}>
+      {/* Motion.dev Inspired Muted Animated Grid Overlay */}
+      <div className="absolute inset-0 bg-grid-motion-muted pointer-events-none z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/5 via-transparent to-purple-500/5 pointer-events-none z-0 animate-grid-shimmer"></div>
+
       {/* Decorative Side Rules */}
       <div className="absolute left-0 top-0 bottom-0 w-px bg-border hidden lg:block ml-12 z-0 pointer-events-none"></div>
       <div className="absolute right-0 top-0 bottom-0 w-px bg-border hidden lg:block mr-12 z-0 pointer-events-none"></div>
@@ -92,9 +96,10 @@ export const Section: React.FC<SectionProps> = ({ id, title, children, className
           )}
           
           {/* Content Column (Right) */}
-          <div className={`${title ? 'md:col-span-9 lg:col-span-10' : 'md:col-span-12'} relative bg-background/70`}>
-             {/* Tech Corner Marker Top-Right of content area */}
-             <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-white/20"></div>
+          <div className={`${title ? 'md:col-span-9 lg:col-span-10' : 'md:col-span-12'} relative bg-background/60 backdrop-blur-[2px]`}>
+             {/* Motion.dev Tech Corner Markers */}
+             <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-cyan-400/30"></div>
+             <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-cyan-400/30"></div>
              {children}
           </div>
         </div>

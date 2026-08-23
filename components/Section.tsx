@@ -32,7 +32,7 @@ export const Section: React.FC<SectionProps> = ({ id, title, children, className
     <section id={id} ref={sectionRef} className={`w-full relative ${className}`}>
       {/* Motion.dev Inspired Muted Animated Grid Overlay */}
       <div className="absolute inset-0 bg-grid-motion-muted pointer-events-none z-0"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/5 via-transparent to-purple-500/5 pointer-events-none z-0 animate-grid-shimmer"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/2 via-transparent to-blue-500/2 pointer-events-none z-0 animate-grid-shimmer"></div>
 
       {/* Decorative Side Rules */}
       <div className="absolute left-0 top-0 bottom-0 w-px bg-border hidden lg:block ml-12 z-0 pointer-events-none"></div>
@@ -41,12 +41,12 @@ export const Section: React.FC<SectionProps> = ({ id, title, children, className
       {/* Parallax Watermark Title */}
       {title && (
         <div 
-          className="absolute top-20 left-0 w-full font-display font-bold text-[12rem] md:text-[20rem] uppercase text-center pointer-events-none select-none overflow-hidden z-0 opacity-0 transition-opacity duration-1000 will-change-transform"
+          className="absolute top-16 left-0 w-full font-display font-bold text-[7rem] md:text-[11rem] uppercase text-center pointer-events-none select-none overflow-hidden z-0 opacity-0 transition-opacity duration-1000 will-change-transform"
           style={{ 
              color: 'transparent', 
-             WebkitTextStroke: '2px rgba(255,255,255,0.02)',
+             WebkitTextStroke: '1.5px rgba(255,255,255,0.02)',
              opacity: isVisible ? 1 : 0,
-             transform: 'translateY(50px)' 
+             transform: 'translateY(30px)' 
           }}
         >
           {title.split('_')[0]}
@@ -54,28 +54,28 @@ export const Section: React.FC<SectionProps> = ({ id, title, children, className
       )}
 
       <div className="max-w-[1920px] mx-auto relative z-10 border-b border-border">
-        <div className="grid grid-cols-1 md:grid-cols-12 min-h-[100px]">
-          {/* Title Column (Left) - Sticky Sliding Rail (NO overflow-hidden to allow CSS sticky) */}
+        <div className="grid grid-cols-1 md:grid-cols-12 min-h-[80px]">
+          {/* Title Column (Left) - Sticky Sliding Rail */}
           {title && (
-            <div className="md:col-span-3 lg:col-span-2 p-6 md:p-8 border-b md:border-b-0 md:border-r border-border relative">
+            <div className="md:col-span-3 lg:col-span-2 p-5 md:p-6 border-b md:border-b-0 md:border-r border-border relative">
               {/* Vertical Guide Rail Line */}
               <div className="absolute right-0 top-0 bottom-0 w-px bg-accent/20 hidden md:block"></div>
               
-              {/* Sticky Container - Pins to screen and glides down the section track */}
+              {/* Sticky Container */}
               <motion.div 
                 className="sticky top-24"
                 initial={{ opacity: 0, x: -30 }}
                 animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
-                  {/* Clean SEC. header line matching design spec */}
-                  <div className="flex items-center gap-2 mb-2 text-accent">
-                     <span className="text-[10px] font-mono tracking-widest uppercase">SEC.</span>
-                     <span className="h-px w-8 bg-accent"></span>
+                  {/* Clean SEC. header line */}
+                  <div className="flex items-center gap-2 mb-1.5 text-accent">
+                     <span className="text-[9px] font-mono tracking-widest uppercase">SEC.</span>
+                     <span className="h-px w-6 bg-accent"></span>
                   </div>
 
                   {/* Section Title */}
-                  <h2 className="text-3xl xl:text-4xl font-display font-bold uppercase text-white leading-[0.95] tracking-wide">
+                  <h2 className="text-2xl xl:text-3xl font-display font-bold uppercase text-white leading-[0.95] tracking-wide">
                   {title.split('_').map((part, i, arr) => (
                     <React.Fragment key={i}>
                       {part}

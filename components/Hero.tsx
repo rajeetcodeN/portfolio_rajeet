@@ -48,7 +48,7 @@ export const Hero: React.FC = () => {
             className="grid grid-cols-1 lg:grid-cols-12 min-h-[85vh] relative z-20"
          >
             {/* Left: Typography Attack */}
-            <div className="lg:col-span-8 p-6 md:p-12 lg:p-20 flex flex-col justify-center relative border-r border-border bg-background/90">
+            <div className="lg:col-span-8 p-6 md:p-10 lg:p-14 flex flex-col justify-center relative border-r border-border bg-background/90">
                {/* Decorative "Warning" Strip */}
                <motion.div 
                  initial={{ scaleX: 0 }}
@@ -57,8 +57,8 @@ export const Hero: React.FC = () => {
                  className="absolute top-0 left-0 w-full h-1 bg-accent origin-left"
                ></motion.div>
                
-               <motion.div variants={itemVariants} className="mb-4 flex items-center gap-4">
-                  <div className="bg-surface border border-accent/30 neon-border px-3 py-1 text-[10px] md:text-xs font-mono text-accent uppercase tracking-widest flex items-center gap-2">
+               <motion.div variants={itemVariants} className="mb-3 flex items-center gap-3">
+                  <div className="bg-surface border border-accent/30 neon-border px-2.5 py-0.5 text-[10px] md:text-xs font-mono text-accent uppercase tracking-widest flex items-center gap-2">
                      <Terminal size={12} />
                      // AI Engineer
                   </div>
@@ -72,7 +72,7 @@ export const Hero: React.FC = () => {
                 <div className="relative w-fit">
                     <motion.h1 
                       variants={itemVariants}
-                      className="text-6xl sm:text-8xl md:text-[10rem] leading-[0.85] font-display font-bold uppercase tracking-tighter break-words select-none relative z-20"
+                      className="text-4xl sm:text-6xl md:text-[6.5rem] leading-[0.88] font-display font-bold uppercase tracking-tighter break-words select-none relative z-20"
                     >
                       <span>Rajeet</span><br />
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-accent to-white drop-shadow-[0_0_20px_rgba(76,169,255,0.4)]">Nair</span>

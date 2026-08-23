@@ -16,7 +16,7 @@ export const NeatBackground: React.FC = () => {
       if (gradient) gradient.yOffset = window.scrollY * 0.6;
     };
 
-    (async () => {
+    const initGradient = async () => {
       const { NeatGradient } = await import('@firecms/neat');
       if (disposed || !canvasRef.current) return;
 
@@ -70,10 +70,19 @@ export const NeatBackground: React.FC = () => {
       });
 
       window.addEventListener('scroll', onScroll, { passive: true });
-    })();
+    };
+
+    const timer = setTimeout(() => {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => initGradient());
+      } else {
+        initGradient();
+      }
+    }, 50);
 
     return () => {
       disposed = true;
+      clearTimeout(timer);
       window.removeEventListener('scroll', onScroll);
       gradient?.destroy();
     };

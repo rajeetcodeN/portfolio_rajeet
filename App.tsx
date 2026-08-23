@@ -26,48 +26,22 @@ const ScrollToTop = () => {
   return null;
 };
 
-// Optimized Boot Sequence
+// Optimized Boot Sequence — Fast initial paint for low LCP
 const BootSequence = ({ onComplete }: { onComplete: () => void }) => {
-  const [steps, setSteps] = useState<string[]>([]);
-  
   useEffect(() => {
-    const sequence = [
-      "INITIALIZING KERNEL...",
-      "LOADING SYSTEM MODULES...",
-      "CONNECTING TO DATABASE...",
-      "UI OPTIMIZED.",
-      "WELCOME, VISITOR."
-    ];
-    
-    let delay = 0;
-    const timeouts: ReturnType<typeof setTimeout>[] = [];
-
-    sequence.forEach((step, index) => {
-      delay += Math.random() * 60 + 30; 
-      const id = setTimeout(() => {
-        setSteps(prev => [...prev, step]);
-        if (index === sequence.length - 1) {
-          setTimeout(onComplete, 150);
-        }
-      }, delay);
-      timeouts.push(id);
-    });
-
-    return () => timeouts.forEach(clearTimeout);
+    // Instant boot sequence trigger to optimize LCP
+    const timer = setTimeout(onComplete, 120);
+    return () => clearTimeout(timer);
   }, [onComplete]);
 
   return (
     <div className="fixed inset-0 bg-background z-[1000] flex flex-col items-center justify-center font-mono text-accent">
        <div className="w-64">
           <div className="flex justify-between items-center mb-4 border-b border-accent/30 pb-2">
-             <span className="text-xs tracking-widest">BOOT_SEQ_V2.1</span>
-             <Loader2 className="animate-spin" size={14} />
+             <span className="text-xs tracking-widest">BOOT_SEQ_FAST_V2</span>
+             <Loader2 className="animate-spin text-accent" size={14} />
           </div>
-          <div className="space-y-2 h-32">
-            {steps.map((step, i) => (
-              <div key={i} className="text-sm typing-effect opacity-80">&gt; {step}</div>
-            ))}
-          </div>
+          <div className="text-sm typing-effect opacity-90">&gt; INITIALIZING_KERNEL...</div>
           <div className="mt-4 h-1 w-full bg-surface relative overflow-hidden">
              <div className="absolute inset-0 bg-accent animate-progress-bar"></div>
           </div>

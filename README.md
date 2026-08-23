@@ -1,20 +1,17 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Portfolio & AI Engineering Backend Service
 
-# Run and deploy your AI Studio app
+FastAPI backend & React portfolio showcase for AI Engineering projects, CAD/RFQ Vision APIs, and Sub-1B LLM edge inference.
 
-This contains everything you need to run your app locally.
+## FastAPI Cloud Deployment
 
-View your app in AI Studio: https://ai.studio/apps/a98e36ec-1091-4ca9-ab8e-dc18d9dc35c2
+This repository includes a root `main.py` entrypoint ready for **FastAPI Cloud** deployment (`fastapi run`).
 
-## Run Locally
+### Endpoints
+- `GET /` - Interactive API docs or frontend
+- `GET /health` - System health check
+- `GET /api/profile` - AI Engineer profile metadata
 
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Run Locally
+```bash
+uvicorn main:app --reload --port 8000
+```

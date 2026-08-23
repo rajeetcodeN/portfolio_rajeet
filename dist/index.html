@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rajeet Nair | Generative AI Engineer</title>
+    <meta name="description" content="Rajeet Nair — AI Engineer & Full-Stack Developer in Mumbai, India. GenAI, RAG pipelines, LLM agents, OCR & automation for manufacturing. Python · FastAPI · LangChain · n8n Verified Creator." />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Rajeet Nair | AI Engineer — RAG, LLM Agents & Automation" />
+    <meta property="og:description" content="AI Engineer & Full-Stack Developer. RAG · Document Intelligence · Multimodal Vision · n8n Automation. Building production-grade AI systems for manufacturing." />
+    <meta property="og:url" content="https://rajeetnair.dev/" />
+    <meta property="og:site_name" content="Rajeet Nair Portfolio" />
+    <meta property="og:image" content="https://rajeetnair.dev/profile.jpg" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="800" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Rajeet Nair | AI Engineer" />
+    <meta name="twitter:description" content="RAG · Document Intelligence · Multimodal Vision · AI Automation. Verified n8n Creator." />
+    <meta name="twitter:image" content="https://rajeetnair.dev/profile.jpg" />
+
+    <!-- Canonical + author -->
+    <link rel="canonical" href="https://rajeetnair.dev/" />
+    <meta name="author" content="Rajeet Nair" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Structured Data: Person schema for search engines & AI crawlers -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Rajeet Nair",
+      "jobTitle": "AI Software Developer | Generative AI, Automation & RAG Systems",
+      "description": "AI Engineer & Full-Stack Developer specializing in GenAI, RAG pipelines, LLM agents, OCR and workflow automation for manufacturing.",
+      "email": "mailto:rajeet9653@gmail.com",
+      "url": "https://rajeetnair.dev/",
+      "sameAs": [
+        "https://github.com/rajeetcodeN",
+        "https://linkedin.com/in/rajeet-nair"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Mumbai",
+        "addressCountry": "IN"
+      },
+      "worksFor": { "@type": "Organization", "name": "Digital Biz Tech" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Mumbai University" },
+      "knowsAbout": ["Generative AI", "RAG", "LLM", "AI Agents", "OCR", "LangChain", "FastAPI", "Python", "n8n", "Vector Databases"],
+      "hasCredential": [
+        { "@type": "EducationalOccupationalCredential", "name": "OCI 2025 Certified Generative AI Professional", "credentialCategory": "certification" },
+        { "@type": "EducationalOccupationalCredential", "name": "Salesforce Certified Agentforce Specialist", "credentialCategory": "certification" },
+        { "@type": "EducationalOccupationalCredential", "name": "Oracle AI Vector Search Certified Professional", "credentialCategory": "certification" },
+        { "@type": "EducationalOccupationalCredential", "name": "n8n Level 1 Certification", "credentialCategory": "certification" }
+      ]
+    }
+    </script>
+    <meta name="theme-color" content="#050505" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23050505'/%3E%3Ctext x='50' y='72' font-size='60' font-family='monospace' font-weight='bold' fill='%234CA9FF' text-anchor='middle'%3ERN%3C/text%3E%3C/svg%3E" />
+    
+    <!-- Optimized Font Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Rajdhani:wght@300;400;500;600;700&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              background: '#050505', // Deep Void Matte
+              surface: '#121212',    // Off-Black Surface
+              surfaceHighlight: '#1A1A1A', 
+              textMain: '#F0F0F0',   // Bright White Ink
+              textMuted: '#9CA3AF',  // Muted Gray Ink
+              accent: 'var(--color-accent)',     // Dynamic Accent
+              accentDim: 'var(--color-accent-dim)',  // Dynamic Dim Accent
+              border: '#262626',     // Dark Matte Border
+            },
+            fontFamily: {
+              sans: ['Rajdhani', 'sans-serif'], 
+              display: ['Teko', 'sans-serif'],
+              mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+            },
+            backgroundImage: {
+              'dot-pattern': 'radial-gradient(circle, #262626 1px, transparent 1px)',
+              'grid-pattern': 'linear-gradient(to right, #1A1A1A 1px, transparent 1px), linear-gradient(to bottom, #1A1A1A 1px, transparent 1px)',
+              'stripe-pattern': 'repeating-linear-gradient(45deg, transparent, transparent 10px, #1A1A1A 10px, #1A1A1A 20px)',
+              'cyber-grid': 'linear-gradient(to right, rgba(6, 182, 212, 0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(217, 70, 239, 0.15) 1px, transparent 1px)',
+              'micro-metal': 'radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)',
+              // Pre-calculated low-cost noise pattern (base64)
+              'noise-static': "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAA5OTkAAABMTExERERmZmYzMzMyMjJl7m+WAAAAACHRSTlMAMwA1MzMzM7O0s14AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAwSURBVDjLY2AYBaNgKLHgAAgTkBmMxYwMDCwMjAwMCgyMDKwMjAxMDEAMxYwMQA4A4xYCg/s/wBIAAAAASUVORK5CYII=')",
+            },
+            backgroundSize: {
+              'dot-pattern': '24px 24px',
+              'grid-pattern': '40px 40px',
+              'cyber-grid': '40px 40px',
+              'micro-metal': '4px 4px',
+            },
+            animation: {
+              'marquee': 'marquee 25s linear infinite',
+              'progress-bar': 'progress 1.5s ease-in-out infinite',
+              'fade-in': 'fadeIn 1s ease-out forwards',
+              'grid-scroll': 'gridScroll 20s linear infinite',
+              'scanline': 'scanline 2s linear infinite',
+            },
+            keyframes: {
+              marquee: {
+                '0%': { transform: 'translateX(0%)' },
+                '100%': { transform: 'translateX(-100%)' },
+              },
+              progress: {
+                '0%': { transform: 'translateX(-100%)' },
+                '100%': { transform: 'translateX(100%)' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              gridScroll: {
+                '0%': { backgroundPosition: '0 0' },
+                '100%': { backgroundPosition: '40px 40px' },
+              },
+              scanline: {
+                '0%': { transform: 'translateY(-100%)' },
+                '100%': { transform: 'translateY(100%)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        --color-accent: #4CA9FF;
+        --color-accent-dim: #2B5C8A;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        cursor: auto; 
+      }
+      body {
+        background-color: #050505;
+        color: #F0F0F0;
+        font-family: 'Rajdhani', sans-serif;
+        /* Optimized for sticky positioning */
+        overflow-x: hidden;
+      }
+      
+      /* Industrial Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+        background: #050505;
+      }
+      ::-webkit-scrollbar-track {
+        background: #121212;
+        border-left: 1px solid #262626;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--color-accent-dim);
+        border-radius: 0;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--color-accent);
+      }
+
+      /* High-Vis Selection */
+      ::selection {
+        background-color: var(--color-accent);
+        color: #050505;
+      }
+
+      .no-scrollbar::-webkit-scrollbar {
+          display: none;
+      }
+      .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+      }
+      
+      /* Optimized Static Noise Texture - Zero GPU Cost */
+      .bg-noise {
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAA5OTkAAABMTExERERmZmYzMzMyMjJl7m+WAAAAACHRSTlMAMwA1MzMzM7O0s14AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAwSURBVDjLY2AYBaNgKLHgAAgTkBmMxYwMDCwMjAwMCgyMDKwMjAxMDEAMxYwMQA4A4xYCg/s/wBIAAAAASUVORK5CYII=");
+        opacity: 0.05;
+        pointer-events: none;
+        background-repeat: repeat;
+      }
+
+      /* Performance Optimizations for GPU Offloading */
+      .animate-marquee { will-change: transform; }
+      .animate-progress-bar { will-change: transform; }
+      .animate-scanline { will-change: transform; }
+      .animate-grid-scroll { will-change: background-position; }
+
+      /* Outline Text Utility */
+      .text-outline {
+        -webkit-text-stroke: 1px rgba(240, 240, 240, 0.2);
+        color: transparent;
+      }
+      .text-outline-accent {
+        -webkit-text-stroke: 1px var(--color-accent);
+        color: transparent;
+      }
+
+      /* Tech Corners */
+      .corner-brackets {
+        position: relative;
+      }
+      .corner-brackets::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 8px;
+        height: 8px;
+        border-top: 2px solid var(--color-accent);
+        border-left: 2px solid var(--color-accent);
+      }
+      .corner-brackets::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 8px;
+        height: 8px;
+        border-bottom: 2px solid var(--color-accent);
+        border-right: 2px solid var(--color-accent);
+      }
+
+      /* ============ CYBERPUNK LAYER ============ */
+
+      /* CRT scanlines overlay */
+      .scanlines-overlay {
+        background: repeating-linear-gradient(
+          to bottom,
+          transparent 0px,
+          transparent 2px,
+          rgba(0, 0, 0, 0.18) 3px,
+          rgba(0, 0, 0, 0.18) 4px
+        );
+        pointer-events: none;
+      }
+
+      /* CRT vignette */
+      .crt-vignette {
+        background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%);
+        pointer-events: none;
+      }
+
+      /* Neon text glow */
+      .neon-text {
+        text-shadow:
+          0 0 4px var(--color-accent),
+          0 0 12px color-mix(in srgb, var(--color-accent) 60%, transparent),
+          0 0 32px color-mix(in srgb, var(--color-accent) 35%, transparent);
+      }
+      .neon-border {
+        box-shadow:
+          0 0 5px color-mix(in srgb, var(--color-accent) 40%, transparent),
+          inset 0 0 5px color-mix(in srgb, var(--color-accent) 15%, transparent);
+      }
+
+      /* Flicker animation (subtle neon instability) */
+      @keyframes flicker {
+        0%, 100% { opacity: 1; }
+        92% { opacity: 1; }
+        93% { opacity: 0.6; }
+        94% { opacity: 1; }
+        96% { opacity: 0.8; }
+        97% { opacity: 1; }
+      }
+      .animate-flicker { animation: flicker 6s infinite; }
+
+      /* Glitch effect — RGB split on hover/loop */
+      .glitch {
+        position: relative;
+        display: inline-block;
+      }
+      .glitch::before,
+      .glitch::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .glitch::before {
+        color: #ff00c1;
+        z-index: -1;
+        animation: glitch-shift-a 4s infinite linear alternate-reverse;
+      }
+      .glitch::after {
+        color: #00fff9;
+        z-index: -2;
+        animation: glitch-shift-b 3.2s infinite linear alternate-reverse;
+      }
+      @keyframes glitch-shift-a {
+        0%, 88%, 100% { clip-path: inset(0 0 100% 0); transform: translateX(0); opacity: 0; }
+        90% { clip-path: inset(20% 0 55% 0); transform: translateX(-4px); opacity: 0.85; }
+        92% { clip-path: inset(65% 0 10% 0); transform: translateX(4px); opacity: 0.85; }
+        94% { clip-path: inset(40% 0 40% 0); transform: translateX(-2px); opacity: 0.85; }
+      }
+      @keyframes glitch-shift-b {
+        0%, 86%, 100% { clip-path: inset(0 0 100% 0); transform: translateX(0); opacity: 0; }
+        88% { clip-path: inset(10% 0 70% 0); transform: translateX(3px); opacity: 0.7; }
+        91% { clip-path: inset(50% 0 25% 0); transform: translateX(-3px); opacity: 0.7; }
+        95% { clip-path: inset(75% 0 5% 0); transform: translateX(2px); opacity: 0.7; }
+      }
+
+      /* Scanline sweep (vertical beam passing over hero) */
+      @keyframes sweep-down {
+        0% { transform: translateY(-100%); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateY(2000%); opacity: 0; }
+      }
+      .scanline-sweep {
+        background: linear-gradient(to bottom,
+          transparent,
+          color-mix(in srgb, var(--color-accent) 12%, transparent) 45%,
+          color-mix(in srgb, var(--color-accent) 30%, transparent) 50%,
+          color-mix(in srgb, var(--color-accent) 12%, transparent) 55%,
+          transparent);
+        animation: sweep-down 7s linear infinite;
+      }
+
+      /* Reduced motion accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        .animate-flicker, .glitch::before, .glitch::after, .scanline-sweep,
+        .animate-drift-a, .animate-drift-b { animation: none !important; }
+      }
+
+      /* ============ AMBIENT BACKGROUND SYSTEM ============ */
+
+      /* Accent-tinted grid, fading toward edges */
+      .bg-accent-grid {
+        background-image:
+          linear-gradient(to right, color-mix(in srgb, var(--color-accent) 6%, transparent) 1px, transparent 1px),
+          linear-gradient(to bottom, color-mix(in srgb, var(--color-accent) 6%, transparent) 1px, transparent 1px);
+        background-size: 48px 48px;
+        -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 25%, transparent 80%);
+        mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 25%, transparent 80%);
+      }
+
+      /* Depth vignette */
+      .bg-vignette {
+        background:
+          radial-gradient(ellipse 120% 90% at 50% -10%, color-mix(in srgb, var(--color-accent) 5%, transparent), transparent 60%),
+          radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%);
+      }
+
+      /* Drifting aurora blobs */
+      @keyframes drift-a {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(60px, 40px) scale(1.15); }
+        66% { transform: translate(-40px, 70px) scale(0.95); }
+      }
+      @keyframes drift-b {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(-80px, -50px) scale(1.2); }
+      }
+      .bg-blob {
+        position: absolute;
+        border-radius: 9999px;
+        filter: blur(110px);
+        will-change: transform;
+        pointer-events: none;
+      }
+      .animate-drift-a { animation: drift-a 28s ease-in-out infinite; }
+      .animate-drift-b { animation: drift-b 34s ease-in-out infinite; }
+
+      /* Deep gradient base — replaces flat black */
+      .cyber-base {
+        background:
+          radial-gradient(ellipse 90% 55% at 70% -10%, color-mix(in srgb, var(--color-accent) 7%, transparent), transparent 60%),
+          linear-gradient(180deg,
+            #0a1020 0%,
+            #060810 28%,
+            #050505 52%,
+            #0a0612 78%,
+            #12081f 100%
+          );
+      }
+
+      /* Slow breathing pulse on the whole gradient field */
+      @keyframes field-breathe {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.82; }
+      }
+      .animate-breathe { animation: field-breathe 12s ease-in-out infinite; }
+    </style>
+  <script type="module" crossorigin src="/assets/index-MUBSm1YV.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/react-vendor-BsDQQLPa.js">
+  <link rel="modulepreload" crossorigin href="/assets/motion-BwBiIHbf.js">
+  <link rel="modulepreload" crossorigin href="/assets/genai-eGWmxqv4.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-B4LwyPVw.css">
+</head>
+  <body>
+    <div id="root"></div>
+</body>
+</html>

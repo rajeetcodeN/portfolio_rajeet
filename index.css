@@ -71,38 +71,38 @@
 
 .bg-cyber-grid {
   background-image: 
-    linear-gradient(to right, rgba(76, 169, 255, 0.08) 1px, transparent 1px), 
-    linear-gradient(to bottom, rgba(76, 169, 255, 0.08) 1px, transparent 1px);
+    linear-gradient(to right, rgba(76, 169, 255, 0.16) 1px, transparent 1px), 
+    linear-gradient(to bottom, rgba(76, 169, 255, 0.16) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
 .bg-cyber-grid-dense {
   background-image: 
-    linear-gradient(to right, rgba(6, 182, 212, 0.06) 1px, transparent 1px), 
-    linear-gradient(to bottom, rgba(217, 70, 239, 0.06) 1px, transparent 1px);
+    linear-gradient(to right, rgba(6, 182, 212, 0.12) 1px, transparent 1px), 
+    linear-gradient(to bottom, rgba(217, 70, 239, 0.12) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
 .bg-radial-vignette {
-  background: radial-gradient(circle at 50% 50%, rgba(5, 5, 5, 0.1) 0%, rgba(5, 5, 5, 0.9) 100%);
+  background: radial-gradient(circle at 50% 50%, rgba(5, 5, 5, 0) 0%, rgba(5, 5, 5, 0.75) 100%);
 }
 
 /* Motion.dev Inspired Muted Animated Grid */
 .bg-grid-motion-muted {
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px), 
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.09) 1px, transparent 1px), 
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
 @keyframes slow-grid-shimmer {
-  0% { opacity: 0.2; transform: translateY(-10%); }
-  50% { opacity: 0.5; transform: translateY(10%); }
-  100% { opacity: 0.2; transform: translateY(-10%); }
+  0% { opacity: 0.3; transform: translateY(-5%); }
+  50% { opacity: 0.7; transform: translateY(5%); }
+  100% { opacity: 0.3; transform: translateY(-5%); }
 }
 
 .animate-grid-shimmer {
-  animation: slow-grid-shimmer 14s ease-in-out infinite alternate;
+  animation: slow-grid-shimmer 10s ease-in-out infinite alternate;
 }
 
 .bg-micro-metal {

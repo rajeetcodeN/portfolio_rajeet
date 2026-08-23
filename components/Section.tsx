@@ -95,11 +95,11 @@ export const Section: React.FC<SectionProps> = ({ id, title, children, className
             </div>
           )}
           
-          {/* Content Column (Right) */}
-          <div className={`${title ? 'md:col-span-9 lg:col-span-10' : 'md:col-span-12'} relative bg-background/60 backdrop-blur-[2px]`}>
+          {/* Content Column (Right) - Transparent background so grid animation shows through */}
+          <div className={`${title ? 'md:col-span-9 lg:col-span-10' : 'md:col-span-12'} relative bg-transparent`}>
              {/* Motion.dev Tech Corner Markers */}
-             <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-cyan-400/30"></div>
-             <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-cyan-400/30"></div>
+             <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-cyan-400/40"></div>
+             <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-cyan-400/40"></div>
              {children}
           </div>
         </div>

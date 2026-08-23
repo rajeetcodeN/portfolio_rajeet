@@ -83,11 +83,11 @@ export const NeatBackground: React.FC = () => {
     <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
       <canvas ref={canvasRef} className="w-full h-full" />
 
-      {/* Darkening stack — keeps the vivid hues as deep glow, text readable */}
-      <div className="absolute inset-0 bg-black/60"></div>
-      <div className="absolute inset-0 cyber-base opacity-80"></div>
-      <div className="absolute inset-0 bg-accent-grid"></div>
-      <div className="absolute inset-0 bg-vignette"></div>
+      {/* Darkening stack — adjusted so vivid hues and grid animation shine through */}
+      <div className="absolute inset-0 bg-black/30"></div>
+      <div className="absolute inset-0 cyber-base opacity-40"></div>
+      <div className="absolute inset-0 bg-accent-grid opacity-60"></div>
+      <div className="absolute inset-0 bg-vignette opacity-70"></div>
     </div>
   );
 };

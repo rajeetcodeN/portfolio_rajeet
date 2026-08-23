@@ -115,63 +115,68 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
             </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
+        {/* Mobile Navigation Drawer Modal */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div 
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="md:hidden w-full border-t border-border bg-background/95 backdrop-blur-xl overflow-hidden"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden fixed inset-x-0 top-[57px] bottom-0 z-50 bg-background/95 backdrop-blur-2xl p-6 flex flex-col justify-between overflow-y-auto border-b border-border shadow-2xl"
             >
-              <div className="flex flex-col p-4 gap-4">
-                <div className="flex flex-col gap-2 font-mono text-sm tracking-wider">
-                  <NavLink 
-                    to="/overview" 
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={({ isActive }) => `p-3 border-l-2 ${isActive ? 'border-accent text-accent bg-accent/5' : 'border-transparent text-textMuted hover:text-white hover:bg-surface'}`}
-                  >
-                    [QUICK VIEW]
-                  </NavLink>
-                  {navLinks.map((link) => (
-                    <NavLink 
-                      key={link.path} 
-                      to={link.path} 
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className={({ isActive }) => `p-3 border-l-2 ${isActive ? 'border-accent text-accent bg-accent/5' : 'border-transparent text-textMuted hover:text-white hover:bg-surface'}`}
-                    >
-                      [{link.label}]
-                    </NavLink>
-                  ))}
-                  <NavLink 
-                    to="/code" 
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={({ isActive }) => `p-3 border-l-2 ${isActive ? 'border-accent text-accent bg-accent/5' : 'border-transparent text-textMuted hover:text-white hover:bg-surface'}`}
-                  >
-                    [CODE]
-                  </NavLink>
+              <div className="flex flex-col gap-2 font-mono text-sm tracking-wider">
+                <div className="text-[10px] text-textMuted uppercase tracking-widest mb-2 border-b border-border pb-1">
+                  // NAVIGATION_SYSTEM
                 </div>
-                
-                <div className="flex items-center justify-between border-t border-border pt-4 mt-2">
-                  <button 
-                      onClick={() => {
-                        onOpenTerminal?.();
-                        setIsMobileMenuOpen(false);
-                      }} 
-                      className="flex items-center gap-2 font-mono text-xs text-textMuted hover:text-accent transition-colors"
+                <NavLink 
+                  to="/overview" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={({ isActive }) => `p-3.5 rounded border-l-2 flex items-center justify-between ${isActive ? 'border-accent text-accent bg-accent/10 font-bold' : 'border-transparent text-textMuted hover:text-white hover:bg-surface/50'}`}
+                >
+                  <span>[QUICK VIEW]</span>
+                  <span className="text-[10px] opacity-60">00</span>
+                </NavLink>
+                {navLinks.map((link, idx) => (
+                  <NavLink 
+                    key={link.path} 
+                    to={link.path} 
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={({ isActive }) => `p-3.5 rounded border-l-2 flex items-center justify-between ${isActive ? 'border-accent text-accent bg-accent/10 font-bold' : 'border-transparent text-textMuted hover:text-white hover:bg-surface/50'}`}
                   >
-                      <Terminal size={14} />
-                      [TERMINAL]
-                  </button>
+                    <span>[{link.label}]</span>
+                    <span className="text-[10px] opacity-60">0{idx + 1}</span>
+                  </NavLink>
+                ))}
+                <NavLink 
+                  to="/code" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={({ isActive }) => `p-3.5 rounded border-l-2 flex items-center justify-between ${isActive ? 'border-accent text-accent bg-accent/10 font-bold' : 'border-transparent text-textMuted hover:text-white hover:bg-surface/50'}`}
+                >
+                  <span>[CODE]</span>
+                  <span className="text-[10px] opacity-60">09</span>
+                </NavLink>
+              </div>
+              
+              <div className="flex items-center justify-between border-t border-border pt-4 mt-6">
+                <button 
+                    onClick={() => {
+                      onOpenTerminal?.();
+                      setIsMobileMenuOpen(false);
+                    }} 
+                    className="flex items-center gap-2 font-mono text-xs text-textMuted hover:text-accent transition-colors bg-surface px-3 py-2 border border-border"
+                >
+                    <Terminal size={14} className="text-accent" />
+                    [TERMINAL]
+                </button>
 
-                  <div className="flex items-center gap-3">
-                      <Settings size={12} className="text-textMuted" />
-                      <div className="flex gap-3">
-                          <button onClick={() => toggleTheme('#4CA9FF', '#2B5C8A')} className="w-4 h-4 bg-[#4CA9FF] rounded-full shadow-[0_0_5px_rgba(76,169,255,0.5)]" title="Blue"></button>
-                          <button onClick={() => toggleTheme('#FFD700', '#B89B00')} className="w-4 h-4 bg-[#FFD700] rounded-full shadow-[0_0_5px_rgba(255,215,0,0.5)]" title="Yellow"></button>
-                          <button onClick={() => toggleTheme('#FF4C4C', '#990000')} className="w-4 h-4 bg-[#FF4C4C] rounded-full shadow-[0_0_5px_rgba(255,76,76,0.5)]" title="Red"></button>
-                      </div>
-                  </div>
+                <div className="flex items-center gap-3">
+                    <Settings size={14} className="text-textMuted animate-spin-slow" />
+                    <div className="flex gap-2.5">
+                        <button onClick={() => toggleTheme('#4CA9FF', '#2B5C8A')} className="w-5 h-5 bg-[#4CA9FF] rounded-full shadow-[0_0_8px_rgba(76,169,255,0.5)]" title="Blue"></button>
+                        <button onClick={() => toggleTheme('#FFD700', '#B89B00')} className="w-5 h-5 bg-[#FFD700] rounded-full shadow-[0_0_8px_rgba(255,215,0,0.5)]" title="Yellow"></button>
+                        <button onClick={() => toggleTheme('#FF4C4C', '#990000')} className="w-5 h-5 bg-[#FF4C4C] rounded-full shadow-[0_0_8px_rgba(255,76,76,0.5)]" title="Red"></button>
+                    </div>
                 </div>
               </div>
             </motion.div>

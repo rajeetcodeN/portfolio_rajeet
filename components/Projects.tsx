@@ -8,8 +8,8 @@ import { motion } from 'framer-motion';
 export const Projects: React.FC = () => {
   return (
     <Section id="projects" title="Operations">
-      {/* 2-Column Technical Grid for High Performance & Density */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border border border-border overflow-hidden">
+      {/* 2-Column Technical Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 bg-black border border-border overflow-hidden">
         {PROJECTS.map((project, index) => (
           <motion.div 
             key={index} 
@@ -18,49 +18,39 @@ export const Projects: React.FC = () => {
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
             whileHover="cardHover"
-            className="group relative bg-background p-6 md:p-10 flex flex-col overflow-hidden"
+            className="group relative bg-black border-b md:border-r border-border p-6 md:p-10 flex flex-col overflow-hidden hover:bg-[#070707] transition-colors"
           >
-            {/* Accent gradient wash on hover */}
-            <motion.div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: 'linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 9%, transparent), transparent 55%)',
-              }}
-              initial={{ opacity: 0, x: '-100%' }}
-              variants={{ cardHover: { opacity: 1, x: 0 } }}
-              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            />
-
-            {/* Sliding Tech Stripe on Hover - Schematic Glitch */}
-            <div className="absolute inset-0 bg-stripe-pattern opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none animate-grid-scroll"></div>
-            
             {/* Top Border Scan */}
             <motion.div 
               initial={{ scaleX: 0 }}
               whileHover={{ scaleX: 1 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="absolute top-0 left-0 w-full h-1 bg-accent origin-left z-20"
+              className="absolute top-0 left-0 w-full h-0.5 bg-accent origin-left z-20"
             ></motion.div>
 
-            {/* Header */}
+            {/* Header with Folder Tab & Reticle */}
             <div className="flex justify-between items-start mb-6 relative z-10">
-               <div className="flex flex-col">
-                  <span className="font-mono text-[10px] text-accent uppercase tracking-widest mb-2 flex items-center gap-2">
-                     <Cpu size={10} />
-                     OP-0{index + 1} // {project.id.toUpperCase()}
-                  </span>
-                  <h3 className="text-2xl md:text-3xl font-display font-bold text-textMain uppercase leading-none group-hover:text-accent transition-colors">
+               <div className="flex flex-col min-w-0">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="font-mono text-[10px] text-accent uppercase tracking-widest flex items-center gap-1.5 bg-accent/10 px-2 py-0.5 border border-accent/30 rounded-sm">
+                       <Cpu size={10} />
+                       OP-0{index + 1} // [ ⌖ ]
+                    </span>
+                    <div className="w-8 h-2 text-accent/40 tech-barcode hidden sm:block"></div>
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-display font-bold text-textMain uppercase leading-none group-hover:text-accent transition-colors truncate">
                     {project.title}
                   </h3>
                </div>
-               {/* Status Dot */}
-               <div className="relative">
-                  <div className="w-2 h-2 bg-textMuted group-hover:bg-accent rounded-full transition-colors mt-2 group-hover:shadow-[0_0_10px_#4CA9FF]"></div>
-                  <div className="absolute inset-0 w-2 h-2 bg-accent rounded-full animate-ping opacity-0 group-hover:opacity-40 mt-2"></div>
+               
+               {/* HUD Crosshair Corner */}
+               <div className="flex items-center gap-1 font-mono text-[10px] text-textMuted group-hover:text-accent transition-colors shrink-0 ml-2">
+                  <span>✦</span>
+                  <span>EST.2025</span>
                </div>
             </div>
 
-            {/* Metrics Block */}
+            {/* Metrics Block with Bracket Lines */}
             <div className="mb-8 border-l-2 border-border pl-4 group-hover:border-accent transition-colors relative z-10">
                 <div className="mb-4">
                     <span className="font-mono text-[10px] text-textMuted uppercase tracking-widest flex items-center gap-2 mb-1">
@@ -85,7 +75,7 @@ export const Projects: React.FC = () => {
                         <motion.span 
                           key={tech} 
                           whileHover={{ scale: 1.05, borderColor: "var(--color-accent)" }}
-                          className="px-2 py-1 bg-surface border border-border text-[10px] font-mono text-textMuted uppercase group-hover:text-textMain transition-colors cursor-default"
+                          className="px-2.5 py-1 bg-[#0a0a0a] border border-border text-[10px] font-mono text-textMuted uppercase group-hover:text-textMain group-hover:border-accent/40 transition-colors cursor-default chamfer-card-tr"
                         >
                             {tech}
                         </motion.span>
@@ -97,27 +87,23 @@ export const Projects: React.FC = () => {
             </div>
 
             {/* Actions */}
-            <div className="flex items-center gap-4 pt-6 border-t border-border group-hover:border-accent/30 transition-colors relative z-10">
+            <div className="flex items-center gap-4 relative z-10 pt-4 border-t border-border/60">
                 <Link 
-                    to={`/project/${project.id}`} 
-                    className="flex items-center gap-2 font-display font-bold text-lg text-textMain uppercase hover:text-accent transition-colors tracking-wide group/btn"
+                  to={`/project/${project.id}`}
+                  className="flex-1 py-2.5 px-4 bg-accent text-black font-display font-bold text-sm uppercase flex items-center justify-center gap-2 hover:bg-white transition-colors chamfer-card-tr shadow-[0_0_15px_rgba(76,169,255,0.2)]"
                 >
-                    Details <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
+                  Inspect Spec <ArrowRight size={14} />
                 </Link>
-                
-                <div className="flex-grow"></div>
-                
-                {project.demoUrl && (
-                  <motion.a 
-                    whileHover={{ scale: 1.2, color: "var(--color-accent)" }}
-                    href={project.demoUrl} 
+                {project.repoUrl && (
+                  <a 
+                    href={project.repoUrl} 
                     target="_blank" 
-                    rel="noreferrer" 
-                    className="text-textMuted hover:text-textMain transition-colors"
-                    title="Live Demo"
+                    rel="noreferrer"
+                    className="p-2.5 border border-border text-textMuted hover:text-accent hover:border-accent transition-colors chamfer-card-tr"
+                    title="Source Code"
                   >
-                    <ExternalLink size={18} />
-                  </motion.a>
+                    <ExternalLink size={16} />
+                  </a>
                 )}
             </div>
           </motion.div>
@@ -125,8 +111,7 @@ export const Projects: React.FC = () => {
         
         {/* Empty Slot Filler for even grid */}
         {PROJECTS.length % 2 !== 0 && (
-           <div className="hidden md:flex bg-surface/5 items-center justify-center p-10 opacity-50 relative overflow-hidden">
-               <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+           <div className="hidden md:flex bg-black items-center justify-center p-10 opacity-50 relative overflow-hidden border-b border-border">
                <div className="text-center relative z-10">
                    <Layers size={48} className="mx-auto text-border mb-4" />
                    <div className="font-mono text-xs text-textMuted uppercase tracking-widest">Awaiting New Modules</div>

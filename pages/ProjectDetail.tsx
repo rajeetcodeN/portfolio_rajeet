@@ -20,11 +20,9 @@ export const ProjectDetail: React.FC = () => {
                 <ArrowLeft size={14} /> Return to DB
             </Link>
 
-            <div className="border border-border bg-background relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-stripe-pattern opacity-5 pointer-events-none"></div>
-                
+            <div className="border border-border bg-black relative overflow-hidden">
                 {/* Header Block */}
-                <div className="p-6 md:p-16 border-b border-border bg-surface/5">
+                <div className="p-6 md:p-16 border-b border-border bg-black">
                     <div className="flex items-center gap-4 mb-6">
                         <div className="px-3 py-1 bg-accent text-background font-mono text-xs font-bold uppercase tracking-widest">
                             Project ID: {project.id}
@@ -48,15 +46,14 @@ export const ProjectDetail: React.FC = () => {
                             </p>
                         </div>
 
-                        {/* System Architecture Visualization (CSS) */}
-                        <div className="bg-surface/10 border border-border p-6 md:p-12 relative overflow-hidden corner-brackets">
-                             <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                        {/* System Architecture Visualization */}
+                        <div className="bg-black border border-border p-6 md:p-12 relative overflow-hidden corner-brackets">
                              <h4 className="font-mono text-xs text-textMuted uppercase tracking-widest mb-8">System_Flow_Diagram_v1.0</h4>
                              
                              <div className="flex flex-col md:flex-row flex-wrap gap-4 md:gap-8 items-center justify-center relative z-10">
                                 {project.architecture?.map((step, idx) => (
                                     <React.Fragment key={idx}>
-                                        <div className="bg-background border border-border px-6 py-4 font-display font-bold uppercase tracking-wider text-textMain shadow-lg hover:border-accent transition-colors cursor-default relative group">
+                                        <div className="bg-[#0a0a0a] border border-border px-6 py-4 font-display font-bold uppercase tracking-wider text-textMain shadow-lg hover:border-accent transition-colors cursor-default relative group">
                                             {step}
                                             {/* Connector Dot */}
                                             <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-textMuted group-hover:bg-accent transition-colors"></div>
@@ -82,14 +79,14 @@ export const ProjectDetail: React.FC = () => {
                     </div>
 
                     {/* Right: Stack & Meta */}
-                    <div className="lg:col-span-4 bg-surface/5 p-6 md:p-12 flex flex-col">
+                    <div className="lg:col-span-4 bg-black p-6 md:p-12 flex flex-col">
                         <div className="mb-12">
                              <h3 className="font-mono text-sm text-accent uppercase tracking-widest mb-6 flex items-center gap-2">
                                 <Layers size={16} /> Tech Stack
                             </h3>
                             <div className="flex flex-wrap gap-2">
                                 {project.stack.map(tech => (
-                                    <span key={tech} className="px-3 py-2 bg-background border border-border text-xs font-mono uppercase text-textMain flex items-center gap-2 w-full">
+                                    <span key={tech} className="px-3 py-2 bg-[#0a0a0a] border border-border text-xs font-mono uppercase text-textMain flex items-center gap-2 w-full">
                                         <div className="w-1.5 h-1.5 bg-accent"></div>
                                         {tech}
                                     </span>

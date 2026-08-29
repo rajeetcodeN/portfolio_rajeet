@@ -58,8 +58,8 @@
       ]
     }
     </script>
-    <meta name="theme-color" content="#050505" />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23050505'/%3E%3Ctext x='50' y='72' font-size='60' font-family='monospace' font-weight='bold' fill='%234CA9FF' text-anchor='middle'%3ERN%3C/text%3E%3C/svg%3E" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23000000'/%3E%3Ctext x='50' y='72' font-size='60' font-family='monospace' font-weight='bold' fill='%234CA9FF' text-anchor='middle'%3ERN%3C/text%3E%3C/svg%3E" />
     
     <!-- Optimized Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,14 +72,14 @@
         theme: {
           extend: {
             colors: {
-              background: '#050505', // Deep Void Matte
-              surface: '#121212',    // Off-Black Surface
-              surfaceHighlight: '#1A1A1A', 
-              textMain: '#F0F0F0',   // Bright White Ink
-              textMuted: '#9CA3AF',  // Muted Gray Ink
+              background: '#000000', // Pure Solid Black
+              surface: '#080808',    // Ultra-Dark Surface (No Muddy Gray)
+              surfaceHighlight: '#121212', 
+              textMain: '#F5F5F5',   // Bright White Ink
+              textMuted: '#737373',  // Refined Muted Ink
               accent: 'var(--color-accent)',     // Dynamic Accent
               accentDim: 'var(--color-accent-dim)',  // Dynamic Dim Accent
-              border: '#262626',     // Dark Matte Border
+              border: '#171717',     // Ultra-subtle hairline border (No light gray)
             },
             fontFamily: {
               sans: ['Rajdhani', 'sans-serif'], 
@@ -87,19 +87,7 @@
               mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
             },
             backgroundImage: {
-              'dot-pattern': 'radial-gradient(circle, #262626 1px, transparent 1px)',
-              'grid-pattern': 'linear-gradient(to right, #1A1A1A 1px, transparent 1px), linear-gradient(to bottom, #1A1A1A 1px, transparent 1px)',
-              'stripe-pattern': 'repeating-linear-gradient(45deg, transparent, transparent 10px, #1A1A1A 10px, #1A1A1A 20px)',
-              'cyber-grid': 'linear-gradient(to right, rgba(6, 182, 212, 0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(217, 70, 239, 0.15) 1px, transparent 1px)',
-              'micro-metal': 'radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)',
-              // Pre-calculated low-cost noise pattern (base64)
-              'noise-static': "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAA5OTkAAABMTExERERmZmYzMzMyMjJl7m+WAAAAACHRSTlMAMwA1MzMzM7O0s14AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAwSURBVDjLY2AYBaNgKLHgAAgTkBmMxYwMDCwMjAwMCgyMDKwMjAxMDEAMxYwMQA4A4xYCg/s/wBIAAAAASUVORK5CYII=')",
-            },
-            backgroundSize: {
-              'dot-pattern': '24px 24px',
-              'grid-pattern': '40px 40px',
-              'cyber-grid': '40px 40px',
-              'micro-metal': '4px 4px',
+              'subtle-glow': 'radial-gradient(ellipse 80% 50% at 50% -20%, rgba(76, 169, 255, 0.08), transparent)',
             },
             animation: {
               'marquee': 'marquee 25s linear infinite',
@@ -140,16 +128,17 @@
         --color-accent-dim: #2B5C8A;
       }
 
+      html, body, #root {
+        background-color: #000000 !important;
+        background: #000000 !important;
+        color: #F5F5F5;
+        font-family: 'Rajdhani', sans-serif;
+        overflow-x: clip;
+      }
+
       html {
         scroll-behavior: smooth;
         cursor: auto; 
-      }
-      body {
-        background-color: #050505;
-        color: #F0F0F0;
-        font-family: 'Rajdhani', sans-serif;
-        /* Optimized for sticky positioning */
-        overflow-x: hidden;
       }
       
       /* Industrial Scrollbar */
@@ -398,11 +387,11 @@
       }
       .animate-breathe { animation: field-breathe 12s ease-in-out infinite; }
     </style>
-  <script type="module" crossorigin src="/assets/index-B4JbKu0r.js"></script>
+  <script type="module" crossorigin src="/assets/index-CKarKH2K.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/react-vendor-BsDQQLPa.js">
-  <link rel="modulepreload" crossorigin href="/assets/motion-BwBiIHbf.js">
+  <link rel="modulepreload" crossorigin href="/assets/motion-OOfkb52t.js">
   <link rel="modulepreload" crossorigin href="/assets/genai-eGWmxqv4.js">
-  <link rel="stylesheet" crossorigin href="/assets/index-DRxdujWK.css">
+  <link rel="stylesheet" crossorigin href="/assets/index-C6AV1ntx.css">
 </head>
   <body>
     <div id="root"></div>

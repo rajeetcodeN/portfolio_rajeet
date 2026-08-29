@@ -46,14 +46,14 @@ const nodeVariants = {
 
 export const FeaturedSystem: React.FC = () => {
   return (
-    <section id="featured-system" className="py-20 md:py-28 border-b border-border relative overflow-hidden">
+    <section id="featured-system" className="py-14 sm:py-20 md:py-28 border-b border-border bg-black relative overflow-hidden">
       <div className="absolute -top-40 right-0 w-[500px] h-[500px] rounded-full bg-accent/5 blur-[120px] pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="mb-10 sm:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6">
           <div>
             <span className="font-mono text-xs text-accent tracking-widest uppercase">01 / Featured System</span>
-            <h2 className="text-5xl md:text-7xl font-display font-bold uppercase tracking-tighter text-textMain leading-[0.9] mt-2">
+            <h2 className="text-4xl sm:text-6xl md:text-7xl font-display font-bold uppercase tracking-tighter text-textMain leading-[0.9] mt-2">
               Manufacturing<br />
               <span className="neon-text text-accent">Intelligence</span>
             </h2>
@@ -66,9 +66,15 @@ export const FeaturedSystem: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Pipeline */}
           <div className="lg:col-span-7">
-            <div className="font-mono text-[10px] text-textMuted uppercase tracking-widest mb-4 flex items-center gap-2">
-              <GitBranch size={12} className="text-accent" />
-              system.architecture
+            <div className="font-mono text-[10px] text-textMuted uppercase tracking-widest mb-4 flex items-center justify-between border-b border-border/80 pb-2">
+              <div className="flex items-center gap-2">
+                <GitBranch size={12} className="text-accent" />
+                <span>system.architecture // [ ⌖ ]</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-2 text-accent/50 tech-barcode"></div>
+                <span className="text-accent font-bold">STAGE 01-05</span>
+              </div>
             </div>
 
             <motion.div
@@ -83,20 +89,23 @@ export const FeaturedSystem: React.FC = () => {
                     variants={nodeVariants}
                     transition={{ duration: 0.5 }}
                     whileHover={{ borderColor: 'var(--color-accent)' }}
-                    className="group bg-surface/40 border border-border p-4 flex items-start gap-4 hover:bg-surface/60 transition-colors"
+                    className="group bg-black border border-border p-4 flex items-start gap-4 hover:bg-[#070707] transition-colors relative chamfer-card-tr"
                   >
                     <div className="w-10 h-10 shrink-0 border border-accent/30 bg-accent/5 flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-colors">
-                      <node.icon size={18} className="text-accent group-hover:text-background transition-colors" />
+                      <node.icon size={18} className="text-accent group-hover:text-black transition-colors" />
                     </div>
                     <div className="flex-grow min-w-0">
                       <div className="flex items-center justify-between gap-3">
-                        <h3 className="font-mono text-sm font-bold text-textMain tracking-wider">{node.title}</h3>
-                        <span className="font-mono text-[9px] text-textMuted">STAGE_{String(i + 1).padStart(2, '0')}</span>
+                        <h3 className="font-mono text-sm font-bold text-textMain tracking-wider flex items-center gap-1.5">
+                          <span>{node.title}</span>
+                          <span className="text-[10px] text-accent/60">✦</span>
+                        </h3>
+                        <span className="font-mono text-[9px] text-accent border border-accent/30 px-1 py-0.2 bg-accent/5">STAGE_{String(i + 1).padStart(2, '0')}</span>
                       </div>
                       <p className="text-xs text-textMuted mt-1">{node.detail}</p>
                       <div className="flex flex-wrap gap-1.5 mt-2">
                         {node.tech.map((t) => (
-                          <span key={t} className="px-1.5 py-0.5 border border-border font-mono text-[9px] text-textMuted group-hover:border-accent/30 group-hover:text-accent transition-colors">
+                          <span key={t} className="px-2 py-0.5 border border-border bg-[#0a0a0a] font-mono text-[9px] text-textMuted group-hover:border-accent/30 group-hover:text-accent transition-colors">
                             {t}
                           </span>
                         ))}
@@ -113,11 +122,14 @@ export const FeaturedSystem: React.FC = () => {
               ))}
 
               {/* Outputs fan-out */}
-              <motion.div variants={nodeVariants} transition={{ duration: 0.5 }} className="mt-2 bg-accent/10 border border-accent/30 neon-border p-5">
-                <div className="font-mono text-[10px] text-accent uppercase tracking-widest mb-3">// system outputs</div>
+              <motion.div variants={nodeVariants} transition={{ duration: 0.5 }} className="mt-2 bg-black border border-accent/40 p-5 chamfer-card-tr">
+                <div className="flex items-center justify-between mb-3 font-mono text-[10px] text-accent uppercase tracking-widest">
+                  <span>// SYSTEM_OUTPUTS</span>
+                  <span>▲▽▲▽▲</span>
+                </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {OUTPUTS.map((out) => (
-                    <div key={out} className="border border-accent/20 bg-background/60 p-2.5 text-center font-mono text-[10px] text-textMain hover:text-accent hover:border-accent/50 transition-colors cursor-default">
+                    <div key={out} className="border border-border bg-[#0a0a0a] p-2.5 text-center font-mono text-[10px] text-textMain hover:text-accent hover:border-accent/50 transition-colors cursor-default chamfer-card-tr">
                       {out}
                     </div>
                   ))}
@@ -128,15 +140,18 @@ export const FeaturedSystem: React.FC = () => {
 
           {/* Side panel */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-surface/40 border border-border p-6 corner-brackets">
-              <h3 className="font-mono text-xs text-accent uppercase tracking-widest mb-4">// why it matters</h3>
+            <div className="bg-black border border-border p-6 corner-brackets relative chamfer-card-tr">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="font-mono text-xs text-accent uppercase tracking-widest">// WHY_IT_MATTERS</h3>
+                <span className="text-[10px] font-mono text-textMuted">[ + ]</span>
+              </div>
               <p className="text-sm text-textMuted leading-relaxed mb-4">
                 Manufacturing RFQs require reading technical drawings, standards and specs — work that took engineers hours per document.
               </p>
               <div className="space-y-3 font-mono text-xs">
                 <div className="flex justify-between border-b border-border/50 pb-2">
                   <span className="text-textMuted">INPUT</span>
-                  <span className="text-textMain">Technical PDF</span>
+                  <span className="text-textMain">Technical PDF / Blueprint</span>
                 </div>
                 <div className="flex justify-between border-b border-border/50 pb-2">
                   <span className="text-textMuted">PROCESS</span>
@@ -174,14 +189,14 @@ export const FeaturedSystem: React.FC = () => {
             </div>
 
             {/* Currently Exploring */}
-            <div className="bg-surface/40 border border-border p-6">
+            <div className="bg-black border border-border p-6">
               <h3 className="font-mono text-xs text-accent uppercase tracking-widest mb-4 flex items-center gap-2">
                 <FlaskConical size={14} />
                 currently exploring
               </h3>
               <div className="flex flex-wrap gap-2">
                 {CURRENTLY_EXPLORING.map((topic) => (
-                  <span key={topic} className="px-3 py-1.5 border border-border bg-background/60 font-mono text-[10px] text-textMuted hover:text-accent hover:border-accent/40 transition-colors cursor-default">
+                  <span key={topic} className="px-3 py-1.5 border border-border bg-[#0a0a0a] font-mono text-[10px] text-textMuted hover:text-accent hover:border-accent/40 transition-colors cursor-default">
                     → {topic}
                   </span>
                 ))}

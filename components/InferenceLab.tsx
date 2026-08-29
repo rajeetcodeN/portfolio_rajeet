@@ -42,20 +42,32 @@ const TemperatureCard: React.FC = () => {
   const topIdx = probs.indexOf(Math.max(...probs));
 
   return (
-    <div className="bg-surface/30 border border-border corner-brackets p-6 flex flex-col">
-      <div className="flex items-center justify-between mb-1">
-        <h3 className="font-mono text-xs text-accent tracking-widest uppercase flex items-center gap-2">
-          <Thermometer size={14} />
-          // temperature.sampling
-        </h3>
-        <span className="font-mono text-[10px] text-textMuted">softmax(z/T)</span>
+    <div className="bg-black border border-border corner-brackets p-6 flex flex-col relative chamfer-card-tr">
+      {/* Top HUD Telemetry Bar */}
+      <div className="flex items-center justify-between mb-3 border-b border-border/60 pb-2">
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 border border-accent rounded-full flex items-center justify-center relative">
+            <span className="text-[8px] text-accent font-bold">☒</span>
+          </div>
+          <h3 className="font-mono text-xs text-accent tracking-widest uppercase flex items-center gap-1.5">
+            <Thermometer size={13} />
+            <span>TEMP_SAMPLING // [ ⌖ ]</span>
+          </h3>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-12 h-2 text-accent/40 tech-barcode"></div>
+          <span className="font-mono text-[9px] text-textMuted font-bold">SOFTMAX(z/T)</span>
+        </div>
       </div>
-      <p className="text-xs text-textMuted mb-5">Next-token distribution over a fixed logit vector.</p>
+      <p className="text-xs text-textMuted mb-4">Next-token probability distribution over dynamic temperature scaling.</p>
 
-      <div className="flex items-baseline justify-between mb-3">
-        <span className="font-display text-4xl font-bold text-white">
-          {temp.toFixed(2)}
-        </span>
+      <div className="flex items-baseline justify-between mb-3 bg-[#0a0a0a] p-3 border border-border rounded-lg">
+        <div className="flex items-center gap-3">
+          <span className="font-display text-4xl font-bold text-white">
+            {temp.toFixed(2)}
+          </span>
+          <div className="w-8 h-8 text-accent/30 tech-dots-matrix hidden sm:block"></div>
+        </div>
         <div className="text-right font-mono text-[10px] text-textMuted leading-relaxed">
           <div>entropy: <span className="text-accent">{entropy.toFixed(2)}</span> bits</div>
           <div>argmax: <span className="text-accent">&quot;{TOKEN_CANDIDATES[topIdx][0]}&quot;</span></div>
@@ -84,7 +96,7 @@ const TemperatureCard: React.FC = () => {
             <span className={`font-mono text-xs w-16 shrink-0 ${i === topIdx ? 'text-accent' : 'text-textMuted'}`}>
               {token}
             </span>
-            <div className="flex-grow h-4 bg-background/60 overflow-hidden">
+            <div className="flex-grow h-4 bg-[#0a0a0a] border border-border/40 overflow-hidden">
               <motion.div
                 className={`h-full ${i === topIdx ? 'bg-accent' : 'bg-accentDim'}`}
                 animate={{ width: `${(probs[i] * 100).toFixed(1)}%` }}
@@ -125,7 +137,7 @@ const HarnessCard: React.FC = () => {
   }, [decoding]);
 
   return (
-    <div className="bg-surface/30 border border-border corner-brackets p-6 flex flex-col">
+    <div className="bg-black border border-border corner-brackets p-6 flex flex-col">
       <div className="flex items-center justify-between mb-1">
         <h3 className="font-mono text-xs text-accent tracking-widest uppercase flex items-center gap-2">
           <Cpu size={14} />
@@ -146,7 +158,7 @@ const HarnessCard: React.FC = () => {
                 active
                   ? 'border-accent/50 bg-accent/10 neon-border'
                   : done
-                  ? 'border-border bg-surface/40 opacity-70'
+                  ? 'border-border bg-[#0a0a0a] opacity-70'
                   : 'border-border/40 opacity-40'
               }`}
             >
@@ -181,11 +193,11 @@ const HarnessCard: React.FC = () => {
       </div>
 
       <div className="mt-auto grid grid-cols-2 gap-3">
-        <div className="border border-border/50 p-2.5">
+        <div className="border border-border/50 p-2.5 bg-[#050505]">
           <div className="font-mono text-[9px] text-textMuted uppercase mb-1">TTFT</div>
           <div className="font-display text-xl text-white">42<span className="text-xs text-textMuted ml-1">ms</span></div>
         </div>
-        <div className="border border-border/50 p-2.5">
+        <div className="border border-border/50 p-2.5 bg-[#050505]">
           <div className="font-mono text-[9px] text-textMuted uppercase mb-1">tokens out</div>
           <div className="font-display text-xl text-accent">{tokens}</div>
         </div>
@@ -198,7 +210,7 @@ const DistillationCard: React.FC = () => {
   const packets = [0, 1, 2, 3, 4];
 
   return (
-    <div className="bg-surface/30 border border-border corner-brackets p-6 flex flex-col relative overflow-hidden">
+    <div className="bg-black border border-border corner-brackets p-6 flex flex-col relative overflow-hidden">
       <div className="flex items-center justify-between mb-1">
         <h3 className="font-mono text-xs text-accent tracking-widest uppercase flex items-center gap-2">
           <BrainCircuit size={14} />
@@ -225,7 +237,7 @@ const DistillationCard: React.FC = () => {
           />
         ))}
 
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-16 h-16 border-2 border-accent/60 rounded-lg bg-surface/80 flex flex-col items-center justify-center animate-flicker">
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-16 h-16 border-2 border-accent/60 rounded-lg bg-black flex flex-col items-center justify-center">
           <Zap size={16} className="text-accent" />
           <span className="font-mono text-[9px] text-textMuted mt-0.5">70B</span>
         </div>
@@ -246,7 +258,7 @@ const DistillationCard: React.FC = () => {
             <span className="text-textMuted uppercase">teacher · MMLU</span>
             <span className="text-white">86.4%</span>
           </div>
-          <div className="h-1.5 bg-background/60">
+          <div className="h-1.5 bg-[#121212]">
             <motion.div className="h-full bg-accentDim" initial={{ width: 0 }} whileInView={{ width: '86.4%' }} viewport={{ once: true }} transition={{ duration: 1 }} />
           </div>
         </div>
@@ -255,7 +267,7 @@ const DistillationCard: React.FC = () => {
             <span className="text-textMuted uppercase">student · MMLU</span>
             <span className="text-accent">82.1%</span>
           </div>
-          <div className="h-1.5 bg-background/60">
+          <div className="h-1.5 bg-[#121212]">
             <motion.div className="h-full bg-accent" initial={{ width: 0 }} whileInView={{ width: '82.1%' }} viewport={{ once: true }} transition={{ duration: 1.4, delay: 0.3 }} />
           </div>
         </div>
@@ -270,23 +282,22 @@ const DistillationCard: React.FC = () => {
 
 export const InferenceLab: React.FC = () => {
   return (
-    <section id="inference-lab" className="py-20 md:py-28 border-b border-border relative overflow-hidden">
-      <div className="absolute inset-0 dot-pattern opacity-[0.03] pointer-events-none"></div>
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="mb-12">
-          <div className="inline-flex items-center gap-2 border border-accent/30 bg-accent/5 px-3 py-1 font-mono text-[10px] text-accent uppercase tracking-widest mb-4">
+    <section id="inference-lab" className="py-14 sm:py-20 md:py-28 border-b border-border bg-black relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="mb-10 sm:mb-12">
+          <div className="inline-flex items-center gap-2 border border-accent/30 bg-accent/5 px-3 py-1 font-mono text-[10px] text-accent uppercase tracking-widest mb-3 sm:mb-4">
             <Zap size={12} />
             Live Concepts
           </div>
-          <h2 className="text-5xl md:text-7xl font-display font-bold uppercase tracking-tighter text-textMain leading-none">
+          <h2 className="text-4xl sm:text-6xl md:text-7xl font-display font-bold uppercase tracking-tighter text-textMain leading-none">
             The <span className="neon-text text-accent">Inference</span> Lab
           </h2>
-          <p className="text-textMuted mt-3 max-w-xl">
+          <p className="text-textMuted mt-3 max-w-xl text-sm sm:text-base">
             Core LLM mechanics — temperature scaling, serving pipelines, distillation — running live with real math. Because I don't just call APIs, I understand them.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6">
           <TemperatureCard />
           <HarnessCard />
           <DistillationCard />

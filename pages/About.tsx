@@ -24,30 +24,29 @@ export const About: React.FC = () => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
                     {/* Left Column: Stats Grid */}
-                    <div className="lg:col-span-4 space-y-px bg-border border border-border">
-                        <div className="bg-background p-6 group hover:bg-surface/10 transition-colors">
+                    <div className="lg:col-span-4 bg-black border border-border">
+                        <div className="bg-black p-6 border-b border-border group hover:bg-[#070707] transition-colors">
                             <div className="flex items-center gap-3 mb-2 text-textMuted group-hover:text-accent">
                                 <MapPin size={18} />
                                 <span className="font-mono text-xs uppercase tracking-widest">Base Loc</span>
                             </div>
                             <div className="text-xl md:text-2xl font-display font-bold">Mumbai, India</div>
                         </div>
-                        <div className="bg-background p-6 group hover:bg-surface/10 transition-colors">
+                        <div className="bg-black p-6 border-b border-border group hover:bg-[#070707] transition-colors">
                             <div className="flex items-center gap-3 mb-2 text-textMuted group-hover:text-accent">
                                 <Target size={18} />
                                 <span className="font-mono text-xs uppercase tracking-widest">Focus</span>
                             </div>
                             <div className="text-xl md:text-2xl font-display font-bold">Agentic Systems</div>
                         </div>
-                        <div className="bg-background p-6 group hover:bg-surface/10 transition-colors">
+                        <div className="bg-black p-6 border-b border-border group hover:bg-[#070707] transition-colors">
                             <div className="flex items-center gap-3 mb-2 text-textMuted group-hover:text-accent">
                                 <Zap size={18} />
                                 <span className="font-mono text-xs uppercase tracking-widest">Status</span>
                             </div>
                             <div className="text-xl md:text-2xl font-display font-bold text-accent">Remote Ready</div>
                         </div>
-                         <div className="bg-background p-6 group hover:bg-surface/10 transition-colors relative overflow-hidden">
-                             <div className="absolute inset-0 bg-stripe-pattern opacity-5 pointer-events-none"></div>
+                         <div className="bg-black p-6 group hover:bg-[#070707] transition-colors relative overflow-hidden">
                             <div className="flex items-center gap-3 mb-2 text-textMuted group-hover:text-accent">
                                 <User size={18} />
                                 <span className="font-mono text-xs uppercase tracking-widest">Experience</span>
@@ -64,13 +63,13 @@ export const About: React.FC = () => {
                             </p>
                             
                             <div className="grid md:grid-cols-2 gap-8 mb-12">
-                                <div className="bg-surface/5 p-6 md:p-8 border border-border corner-brackets">
+                                <div className="bg-black p-6 md:p-8 border border-border corner-brackets">
                                     <h3 className="font-display font-bold text-2xl text-textMain mb-4 uppercase">The Mission</h3>
                                     <p className="text-sm font-mono text-textMuted leading-relaxed">
                                         To replace manual, repetitive business workflows with fault-tolerant AI pipelines. I don't just build demos; I build systems that run 24/7, handling complex tasks like invoice OCR and social media automation.
                                     </p>
                                 </div>
-                                <div className="bg-surface/5 p-6 md:p-8 border border-border corner-brackets">
+                                <div className="bg-black p-6 md:p-8 border border-border corner-brackets">
                                     <h3 className="font-display font-bold text-2xl text-textMain mb-4 uppercase">The Stack</h3>
                                     <p className="text-sm font-mono text-textMuted leading-relaxed">
                                         Specialized in Python, LangChain, and n8n for orchestration. Expert in RAG systems using Qdrant/pgvector, and full-stack integration with Supabase and React. n8n Verified Creator.

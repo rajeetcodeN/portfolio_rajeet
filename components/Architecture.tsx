@@ -6,7 +6,7 @@ const FlowItem = ({ label, last = false }: { label: string; last?: boolean }) =>
   <div className="relative group">
     <div className="flex items-center">
       <div className="
-        bg-surface border border-border text-textMain 
+        bg-[#0a0a0a] border border-border text-textMain 
         px-6 py-4 text-sm md:text-base font-display font-bold uppercase tracking-widest
         group-hover:border-accent group-hover:text-accent group-hover:shadow-[0_0_15px_rgba(76,169,255,0.2)]
         transition-all duration-300 relative z-10
@@ -28,7 +28,7 @@ const FlowItem = ({ label, last = false }: { label: string; last?: boolean }) =>
 
 export const Architecture: React.FC = () => {
   return (
-    <Section title="Sys_Logic" className="bg-background">
+    <Section title="Sys_Logic" className="bg-black">
       <div className="p-6 md:p-12">
         <div className="flex items-center gap-3 mb-12 font-mono text-xs uppercase tracking-widest text-textMuted">
             <Terminal size={14} className="text-accent" />
@@ -36,13 +36,7 @@ export const Architecture: React.FC = () => {
             <span className="flex-grow border-b border-dotted border-border ml-4"></span>
         </div>
 
-        <div className="bg-surface/20 border border-border p-8 md:p-16 relative overflow-hidden group">
-          {/* Animated Background Grid */}
-          <div className="absolute inset-0 bg-grid-pattern opacity-10 animate-grid-scroll pointer-events-none"></div>
-          
-          {/* Scanline Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent h-[10%] w-full animate-scanline opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-          
+        <div className="bg-black border border-border p-8 md:p-16 relative overflow-hidden group">
           <div className="flex flex-wrap gap-y-12 items-center justify-center relative z-10">
             <FlowItem label="Ingest" />
             <FlowItem label="OCR" />

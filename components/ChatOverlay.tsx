@@ -118,29 +118,55 @@ export const ChatOverlay: React.FC<ChatOverlayProps> = ({ isOpen, onClose }) => 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 sm:inset-auto sm:bottom-24 sm:right-8 w-full sm:w-[450px] h-full sm:h-[600px] z-[100] flex flex-col font-mono text-sm animate-fade-in shadow-[0_0_50px_rgba(0,0,0,0.8)]">
+    <div className="fixed inset-0 sm:inset-auto sm:bottom-24 sm:right-8 w-full sm:w-[460px] h-[100dvh] sm:h-[600px] z-[100] flex flex-col font-mono text-sm animate-fade-in sm:shadow-[0_0_50px_rgba(0,0,0,0.8)]">
         {/* Terminal Container */}
-        <div className="flex-grow bg-[#050505]/95 backdrop-blur-md border border-border sm:border-accent/30 flex flex-col relative overflow-hidden sm:rounded-lg">
+        <div className="flex-grow bg-[#050505]/98 backdrop-blur-xl border-b sm:border border-border sm:border-accent/30 flex flex-col relative overflow-hidden sm:rounded-lg">
             
             {/* Scanline & Glow Effects */}
             <div className="absolute inset-0 bg-scanline opacity-5 pointer-events-none z-10"></div>
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent z-20"></div>
 
             {/* Header */}
-            <div className="bg-surface/80 p-3 flex justify-between items-center border-b border-white/10 shrink-0 relative z-30">
-                <div className="flex items-center gap-2 text-accent px-1">
-                    <TerminalIcon size={14} />
-                    <span className="text-xs uppercase tracking-widest font-bold">Terminal_Uplink</span>
+            <div className="bg-surface/90 px-4 py-3 flex justify-between items-center border-b border-white/10 shrink-0 relative z-30">
+                <div className="flex items-center gap-2 text-accent">
+                    <TerminalIcon size={15} />
+                    <span className="text-xs uppercase tracking-widest font-bold">Terminal_Uplink // v2.4</span>
                 </div>
-                <button onClick={onClose} className="hover:text-accent text-textMuted transition-colors p-1">
-                    <X size={16}/>
+                <button 
+                  onClick={onClose} 
+                  className="hover:text-accent text-textMuted active:scale-95 transition-all p-1.5 rounded"
+                  aria-label="Close Terminal"
+                >
+                    <X size={18}/>
                 </button>
             </div>
 
+            {/* Quick Prompt Pill Buttons on Mobile */}
+            <div className="px-3 py-2 bg-surface/30 border-b border-white/5 flex gap-2 overflow-x-auto touch-scroll shrink-0 relative z-20">
+              <button 
+                onClick={() => { setInput('What is your tech stack?'); setTimeout(() => inputRef.current?.focus(), 50); }}
+                className="text-[10px] font-mono px-2.5 py-1 bg-surface border border-border hover:border-accent text-textMuted hover:text-accent whitespace-nowrap active:scale-95 transition-all"
+              >
+                // Tech Stack
+              </button>
+              <button 
+                onClick={() => { setInput('Tell me about the OCR project'); setTimeout(() => inputRef.current?.focus(), 50); }}
+                className="text-[10px] font-mono px-2.5 py-1 bg-surface border border-border hover:border-accent text-textMuted hover:text-accent whitespace-nowrap active:scale-95 transition-all"
+              >
+                // OCR Systems
+              </button>
+              <button 
+                onClick={() => { setInput('help'); setTimeout(() => inputRef.current?.focus(), 50); }}
+                className="text-[10px] font-mono px-2.5 py-1 bg-surface border border-border hover:border-accent text-textMuted hover:text-accent whitespace-nowrap active:scale-95 transition-all"
+              >
+                // Help
+              </button>
+            </div>
+
             {/* Output Area */}
-            <div className="flex-grow p-4 overflow-y-auto no-scrollbar relative z-20" onClick={() => inputRef.current?.focus()}>
+            <div className="flex-grow p-4 overflow-y-auto touch-scroll relative z-20" onClick={() => inputRef.current?.focus()}>
                 {history.map((entry, idx) => (
-                    <div key={idx} className={`mb-3 leading-relaxed break-words ${entry.type === 'user' ? 'text-white' : entry.type === 'system' ? 'text-textMuted text-xs' : 'text-accent'}`}>
+                    <div key={idx} className={`mb-3 leading-relaxed break-words text-xs sm:text-sm ${entry.type === 'user' ? 'text-white' : entry.type === 'system' ? 'text-textMuted text-[11px]' : 'text-accent'}`}>
                         {entry.type === 'user' ? (
                             <span className="flex gap-2">
                                 <span className="text-accent/50 select-none">$</span>
@@ -154,16 +180,16 @@ export const ChatOverlay: React.FC<ChatOverlayProps> = ({ isOpen, onClose }) => 
                     </div>
                 ))}
                 {isTyping && (
-                    <div className="flex gap-1 items-center text-accent/50 text-xs mt-2">
+                    <div className="flex gap-1.5 items-center text-accent text-xs mt-2 font-mono">
                         <span className="w-1.5 h-1.5 bg-accent animate-pulse"></span>
-                        PROCESSING
+                        PROCESSING REQUEST...
                     </div>
                 )}
                 <div ref={scrollRef}></div>
             </div>
 
             {/* Input Area */}
-            <div className="p-3 bg-surface/30 border-t border-white/10 shrink-0 relative z-30">
+            <div className="p-3.5 bg-surface/50 border-t border-white/10 shrink-0 relative z-30 pb-5 sm:pb-3.5">
                 <div className="flex items-center gap-2">
                     <span className="text-accent font-bold animate-pulse">&gt;</span>
                     <input 
@@ -172,11 +198,16 @@ export const ChatOverlay: React.FC<ChatOverlayProps> = ({ isOpen, onClose }) => 
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && handleCommand()}
-                        className="flex-grow bg-transparent border-none outline-none text-white font-mono placeholder-white/20"
-                        placeholder="Enter command..."
+                        className="flex-grow bg-transparent border-none outline-none text-white font-mono text-xs sm:text-sm placeholder-white/30"
+                        placeholder="Type question or command..."
                         autoComplete="off"
+                        autoCapitalize="off"
                     />
-                    <button onClick={handleCommand} className="text-accent hover:text-white transition-colors">
+                    <button 
+                      onClick={handleCommand} 
+                      className="p-1.5 bg-accent text-background hover:bg-white active:scale-95 transition-all"
+                      aria-label="Send Command"
+                    >
                         <Send size={14} />
                     </button>
                 </div>

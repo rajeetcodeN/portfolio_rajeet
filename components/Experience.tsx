@@ -48,11 +48,10 @@ export const Experience: React.FC = () => {
           <motion.div 
             key={index} 
             variants={itemVariants}
-            className="grid grid-cols-1 md:grid-cols-12 border-b border-border group relative overflow-hidden transition-colors"
+            className="grid grid-cols-1 md:grid-cols-12 border-b border-border bg-black hover:bg-[#070707] group relative overflow-hidden transition-colors"
           >
             {/* Active Highlight Scan Line */}
             <div className="absolute left-0 top-0 bottom-0 w-1 bg-accent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-            <div className="absolute inset-0 bg-surface/0 group-hover:bg-surface/20 transition-colors duration-300"></div>
 
             {/* Period Column */}
             <div className="md:col-span-3 p-6 md:p-8 border-b md:border-b-0 md:border-r border-border font-mono text-xs text-accent uppercase tracking-wider flex items-center relative z-10">
@@ -65,7 +64,7 @@ export const Experience: React.FC = () => {
             <div className="md:col-span-9 p-6 md:p-8 relative z-10">
               <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4">
                  <div className="flex items-center gap-3">
-                   <div className="p-1.5 bg-surface border border-border group-hover:border-accent group-hover:text-accent transition-all duration-300 shrink-0">
+                   <div className="p-1.5 bg-[#0a0a0a] border border-border group-hover:border-accent group-hover:text-accent transition-all duration-300 shrink-0">
                      {getJobIcon(job.type)}
                    </div>
                    <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-white uppercase tracking-tight group-hover:text-accent transition-colors">

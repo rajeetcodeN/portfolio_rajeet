@@ -1,131 +1,173 @@
 import React, { useState } from 'react';
 import { Section } from './Section';
-import { Bot, Sparkles, AlertCircle, CheckCircle } from 'lucide-react';
-import { analyzeJobMatch } from '../utils/gemini';
+import { Bot, Sparkles, Send, Terminal, CheckCircle2, CornerDownLeft } from 'lucide-react';
+import { queryAIAgent } from '../utils/gemini';
 
 export const RecruiterAI: React.FC = () => {
-  const [jd, setJd] = useState('');
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [result, setResult] = useState<any>(null);
+  const [prompt, setPrompt] = useState('');
+  const [isExecuting, setIsExecuting] = useState(false);
+  const [response, setResponse] = useState<string | null>(null);
 
-  const handleAnalyze = async () => {
-    if (!jd.trim()) return;
-    setIsAnalyzing(true);
-    setResult(null);
+  const quickPrompts = [
+    "Explain the RAG hybrid search pipeline",
+    "How does the Blueprint Vision OCR work?",
+    "Summarize n8n automation workflows",
+    "What is Rajeet's core tech stack?"
+  ];
 
-    const analysis = await analyzeJobMatch(jd);
-    setResult(analysis);
-    setIsAnalyzing(false);
+  const handleExecute = async (queryToRun?: string) => {
+    const textToSubmit = (queryToRun || prompt).trim();
+    if (!textToSubmit) return;
+    
+    if (queryToRun) setPrompt(queryToRun);
+    setIsExecuting(true);
+    setResponse(null);
+
+    const result = await queryAIAgent(textToSubmit);
+    setResponse(result);
+    setIsExecuting(false);
   };
 
   return (
-    <Section title="AI_Recruiter_Agent" className="bg-background">
-      <div className="p-6 md:p-12">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+    <Section title="AI_Agent" className="bg-black">
+      <div className="p-6 md:p-10">
+        <div className="grid lg:grid-cols-12 gap-8 items-start">
             
-            {/* Input Section */}
-            <div>
-                <div className="flex items-center gap-3 mb-6">
-                    <div className="p-2 bg-accent/10 border border-accent/20 rounded-md">
-                        <Bot className="text-accent" size={24} />
+            {/* Input & Control Panel */}
+            <div className="lg:col-span-6 space-y-4">
+                <div className="flex items-center justify-between border-b border-border/80 pb-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 bg-accent/10 border border-accent/30 flex items-center justify-center text-accent chamfer-card-tr">
+                      <Bot size={20} />
                     </div>
                     <div>
-                        <h3 className="text-xl font-display font-bold text-textMain uppercase">Candidate Fit Analyzer</h3>
-                        <p className="text-xs font-mono text-textMuted uppercase tracking-wider">Powered by Gemini Pro</p>
+                      <h3 className="text-xl font-display font-bold text-white uppercase leading-none">
+                        Interactive AI Agent
+                      </h3>
+                      <p className="text-xs font-mono text-textMuted uppercase tracking-wider mt-1">
+                        Inference Sandbox // Gemini Flash
+                      </p>
                     </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-10 h-2 text-accent/40 tech-barcode hidden sm:block"></div>
+                    <span className="text-[10px] font-mono text-accent border border-accent/30 px-1.5 py-0.5 bg-accent/5">
+                      LIVE
+                    </span>
+                  </div>
                 </div>
-                
-                <p className="text-textMuted mb-6 text-sm">
-                    Paste a Job Description (JD) below. This Agent will analyze Rajeet's portfolio data against your requirements to determine fit percentage and highlight key matches.
+
+                <p className="text-textMuted text-xs sm:text-sm leading-relaxed">
+                  Direct inference endpoint. Query technical architecture, examine pipeline logic, or test agentic responses in real-time.
                 </p>
 
-                <div className="relative group">
-                    <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-lg pointer-events-none"></div>
+                {/* Quick Prompts */}
+                <div>
+                  <div className="font-mono text-[10px] text-textMuted uppercase tracking-widest mb-2 flex items-center gap-1.5">
+                    <span>✦</span> Quick Prompts
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {quickPrompts.map((qp, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => handleExecute(qp)}
+                        disabled={isExecuting}
+                        className="text-left text-[11px] font-mono text-textMuted hover:text-accent hover:border-accent/40 bg-[#0a0a0a] border border-border px-2.5 py-1 transition-colors cursor-pointer chamfer-card-tr disabled:opacity-50"
+                      >
+                        » {qp}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Prompt Textarea */}
+                <div className="relative">
                     <textarea 
-                        className="w-full h-64 bg-surface/30 border border-border p-4 text-sm font-mono text-textMain focus:border-accent focus:outline-none resize-none rounded-sm transition-colors"
-                        placeholder="PASTE JOB DESCRIPTION HERE..."
-                        value={jd}
-                        onChange={(e) => setJd(e.target.value)}
+                        className="w-full h-36 bg-[#0a0a0a] border border-border p-3.5 text-xs sm:text-sm font-mono text-white focus:border-accent focus:outline-none resize-none transition-colors rounded-none placeholder:text-textMuted/50"
+                        placeholder="ENTER INSTRUCTION OR QUERY FOR AI AGENT..."
+                        value={prompt}
+                        onChange={(e) => setPrompt(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+                            handleExecute();
+                          }
+                        }}
                     ></textarea>
+                    <div className="absolute bottom-2 right-2 font-mono text-[9px] text-textMuted">
+                      Ctrl + Enter to run
+                    </div>
                 </div>
 
                 <button 
-                    onClick={handleAnalyze}
-                    disabled={isAnalyzing || !jd}
-                    className="mt-4 w-full py-4 bg-accent text-background font-display font-bold text-xl uppercase hover:bg-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    onClick={() => handleExecute()}
+                    disabled={isExecuting || !prompt.trim()}
+                    className="w-full py-3 px-6 bg-accent text-black font-display font-bold text-base uppercase hover:bg-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 chamfer-card-tr shadow-[0_0_15px_rgba(76,169,255,0.25)]"
                 >
-                    {isAnalyzing ? (
+                    {isExecuting ? (
                         <>
-                            <Sparkles className="animate-spin" size={20} /> Analyzing Vector Matches...
+                            <Sparkles className="animate-spin" size={16} /> Executing Agent Pipeline...
                         </>
                     ) : (
-                        "Analyze Fit Protocol"
+                        <>
+                            <Send size={15} /> Execute Agent Instruction ↗
+                        </>
                     )}
                 </button>
             </div>
 
-            {/* Output Section */}
-            <div className="bg-surface/5 border border-border min-h-[400px] relative overflow-hidden flex flex-col">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-stripe-pattern opacity-10 pointer-events-none"></div>
-                
-                {!result && !isAnalyzing && (
-                    <div className="flex-grow flex flex-col items-center justify-center text-textMuted opacity-50 p-8 text-center">
-                        <Bot size={48} className="mb-4" />
-                        <span className="font-mono text-xs uppercase tracking-widest">Awaiting Input Data...</span>
+            {/* Output Terminal Console */}
+            <div className="lg:col-span-6 bg-black border border-border min-h-[380px] flex flex-col relative overflow-hidden chamfer-card-tr">
+                {/* Console Top Bar */}
+                <div className="p-3 bg-[#0a0a0a] border-b border-border flex items-center justify-between font-mono text-[10px]">
+                  <div className="flex items-center gap-2">
+                    <Terminal size={13} className="text-accent" />
+                    <span className="text-white font-bold uppercase">AGENT_CONSOLE // OUTPUT</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-textMuted">
+                    <span>[ ⌖ ]</span>
+                    <span className="text-green-400">READY</span>
+                  </div>
+                </div>
+
+                {/* State: Awaiting Input */}
+                {!response && !isExecuting && (
+                    <div className="flex-grow flex flex-col items-center justify-center text-textMuted p-8 text-center opacity-40">
+                        <Bot size={40} className="mb-3 text-accent" />
+                        <span className="font-mono text-xs uppercase tracking-widest">Awaiting Prompt Instruction...</span>
+                        <p className="text-[11px] font-mono text-textMuted mt-1">Select a quick prompt or type your query</p>
                     </div>
                 )}
 
-                {isAnalyzing && (
+                {/* State: Executing */}
+                {isExecuting && (
                     <div className="flex-grow flex flex-col items-center justify-center p-8">
-                        <div className="w-16 h-16 border-4 border-border border-t-accent rounded-full animate-spin mb-6"></div>
-                        <div className="font-mono text-xs text-accent uppercase tracking-widest animate-pulse">Processing Semantic Match...</div>
+                        <div className="w-12 h-12 border-2 border-border border-t-accent rounded-full animate-spin mb-4"></div>
+                        <div className="font-mono text-xs text-accent uppercase tracking-widest animate-pulse flex items-center gap-2">
+                          <span>[ + ] INGESTING &amp; SYNTHESIZING...</span>
+                        </div>
                     </div>
                 )}
 
-                {result && (
-                    <div className="p-8 animate-fade-in relative z-10">
-                        <div className="flex items-center justify-between mb-8 border-b border-border pb-6">
-                            <span className="font-mono text-xs text-textMuted uppercase tracking-widest">Match Probability</span>
-                            <div className="text-6xl font-display font-bold text-accent">
-                                {result.matchPercentage}%
-                            </div>
+                {/* State: Resolved Response */}
+                {response && (
+                    <div className="p-5 sm:p-6 flex-grow flex flex-col justify-between font-mono">
+                        <div>
+                          <div className="flex items-center justify-between mb-4 border-b border-border/60 pb-2">
+                            <span className="text-[10px] text-accent uppercase tracking-widest flex items-center gap-1.5">
+                              <CheckCircle2 size={12} className="text-green-400" />
+                              <span>INFERENCE_COMPLETE</span>
+                            </span>
+                            <span className="text-[9px] text-textMuted">LATENCY: ~160MS</span>
+                          </div>
+
+                          <div className="text-xs sm:text-sm text-textMain leading-relaxed whitespace-pre-wrap font-mono">
+                            {response}
+                          </div>
                         </div>
 
-                        <div className="space-y-6">
-                            <div>
-                                <h4 className="font-mono text-xs text-textMain uppercase tracking-widest mb-3 flex items-center gap-2">
-                                    <CheckCircle size={14} className="text-green-500" /> Key Alignments
-                                </h4>
-                                <ul className="space-y-2">
-                                    {result.keyMatches?.map((m: string, i: number) => (
-                                        <li key={i} className="text-sm text-textMuted pl-4 border-l border-green-500/30">
-                                            {m}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            {result.missingSkills && result.missingSkills.length > 0 && (
-                                <div>
-                                    <h4 className="font-mono text-xs text-textMain uppercase tracking-widest mb-3 flex items-center gap-2">
-                                        <AlertCircle size={14} className="text-yellow-500" /> Potential Gaps
-                                    </h4>
-                                    <ul className="space-y-2">
-                                        {result.missingSkills.map((m: string, i: number) => (
-                                            <li key={i} className="text-sm text-textMuted pl-4 border-l border-yellow-500/30">
-                                                {m}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )}
-
-                            <div className="bg-surface/20 p-4 border-l-2 border-accent mt-6">
-                                <span className="font-mono text-[10px] text-accent uppercase tracking-widest block mb-1">System Summary</span>
-                                <p className="text-sm text-white leading-relaxed">
-                                    {result.summary}
-                                </p>
-                            </div>
+                        <div className="mt-6 pt-3 border-t border-border/40 flex items-center justify-between text-[10px] text-textMuted">
+                          <span>STATUS: 200 OK</span>
+                          <span>SYS.ID // RN-AGENT-01</span>
                         </div>
                     </div>
                 )}

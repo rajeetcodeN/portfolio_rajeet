@@ -9,7 +9,6 @@ import { ProjectsPage } from './pages/ProjectsPage';
 import { Overview } from './pages/Overview';
 import { AIScreen } from './pages/AIScreen';
 import { ChatOverlay } from './components/ChatOverlay';
-import { NeatBackground } from './components/NeatBackground';
 import { MessageSquare, Loader2 } from 'lucide-react';
 
 // Lazy Load heavy components
@@ -35,7 +34,7 @@ const BootSequence = ({ onComplete }: { onComplete: () => void }) => {
   }, [onComplete]);
 
   return (
-    <div className="fixed inset-0 bg-background z-[1000] flex flex-col items-center justify-center font-mono text-accent">
+    <div className="fixed inset-0 bg-black z-[1000] flex flex-col items-center justify-center font-mono text-accent">
        <div className="w-64">
           <div className="flex justify-between items-center mb-4 border-b border-accent/30 pb-2">
              <span className="text-xs tracking-widest">BOOT_SEQ_FAST_V2</span>
@@ -67,24 +66,15 @@ function App() {
 
   return (
     <Router>
-        <div className="min-h-screen bg-background text-textMain font-sans selection:bg-accent selection:text-black relative">
+        <div className="min-h-screen bg-black text-textMain font-sans selection:bg-accent selection:text-black relative">
           
-          {/* WebGL Breathing Gradient Background */}
-          <NeatBackground />
-
-          {/* Global Muted Neon Grid Overlay Across All Pages */}
-          <div className="fixed inset-0 bg-cyber-grid z-[1] pointer-events-none opacity-50"></div>
-          <div className="fixed inset-0 bg-radial-vignette z-[2] pointer-events-none"></div>
-
-          <div className="fixed inset-0 bg-noise z-50 mix-blend-overlay pointer-events-none opacity-30"></div>
-
-          {/* Cyberpunk CRT Layer */}
-          <div className="fixed inset-0 scanlines-overlay z-[60] pointer-events-none opacity-20"></div>
+          {/* Subtle Top Ambient Lighting */}
+          <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-accent/5 blur-[140px] pointer-events-none z-0"></div>
           
           <ScrollToTop />
           <Navbar onOpenTerminal={() => setIsChatOpen(true)} />
           
-          <main className="relative z-10 pl-0 transition-opacity duration-1000 animate-fade-in">
+          <main className="relative z-10 pl-0 transition-opacity duration-700 animate-fade-in w-full overflow-x-clip">
             <Suspense fallback={<PageLoader />}>
                 <Routes>
                     <Route path="/" element={<Home />} />
@@ -106,14 +96,14 @@ function App() {
           {/* Global Terminal Overlay */}
           <ChatOverlay isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
 
-          {/* Floating Action Button - Toggles Terminal */}
+          {/* Floating Action Button - Toggles Terminal with Safe Mobile Insets */}
           <button 
             onClick={() => setIsChatOpen(prev => !prev)}
-            className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[90] w-14 h-14 bg-accent rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(76,169,255,0.4)] hover:scale-110 transition-transform group"
+            className="fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-40 w-12 h-12 sm:w-14 sm:h-14 bg-accent rounded-full flex items-center justify-center shadow-[0_0_25px_rgba(76,169,255,0.4)] active:scale-95 sm:hover:scale-110 transition-transform group"
             aria-label="Open Terminal"
           >
-              <div className="absolute inset-0 rounded-full border border-white/20 animate-ping opacity-20"></div>
-              <MessageSquare size={24} className="text-background group-hover:text-white transition-colors" />
+              <div className="absolute inset-0 rounded-full border border-white/30 animate-ping opacity-25 pointer-events-none"></div>
+              <MessageSquare size={22} className="text-background group-hover:text-white transition-colors" />
           </button>
         </div>
     </Router>

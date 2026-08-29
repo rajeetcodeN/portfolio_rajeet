@@ -5,26 +5,26 @@ import { Link } from 'react-router-dom';
 
 export const CertCarousel: React.FC = () => {
   const content = (
-    <>
+    <div className="flex shrink-0">
       {CERTIFICATIONS.map((cert, index) => (
         <div 
             key={index} 
-            className="flex-shrink-0 w-[85vw] md:w-[300px] bg-background p-8 group/card hover:bg-surface/20 transition-colors relative"
+            className="flex-shrink-0 w-[270px] sm:w-[300px] bg-black border-r border-border p-6 sm:p-8 group/card hover:bg-[#0a0a0a] transition-colors relative"
         >
-            <div className="absolute top-4 right-4 opacity-20 group-hover/card:opacity-100 transition-opacity">
+            <div className="absolute top-4 right-4 opacity-25 group-hover/card:opacity-100 transition-opacity">
                 <Award className="text-accent" size={20} />
             </div>
             
-            <div className="mb-6">
-                <div className="text-[10px] font-mono text-accentDim uppercase tracking-widest mb-1">
+            <div className="mb-4 sm:mb-6">
+                <div className="text-[10px] font-mono text-accent uppercase tracking-widest mb-1">
                     Issued By
                 </div>
-                <div className="text-sm font-mono text-textMuted uppercase">
+                <div className="text-xs sm:text-sm font-mono text-textMuted uppercase">
                     {cert.issuer}
                 </div>
             </div>
 
-            <h4 className="font-display font-bold text-2xl text-textMain leading-none mb-6 group-hover/card:text-accent transition-colors min-h-[48px] whitespace-normal">
+            <h4 className="font-display font-bold text-xl sm:text-2xl text-textMain leading-none mb-4 sm:mb-6 group-hover/card:text-accent transition-colors min-h-[44px] whitespace-normal">
                 {cert.name}
             </h4>
 
@@ -38,37 +38,31 @@ export const CertCarousel: React.FC = () => {
         </div>
       ))}
       {/* View All Card */}
-      <Link to="/certs" className="flex-shrink-0 w-[40vw] md:w-[150px] bg-surface/5 flex flex-col justify-center items-center hover:bg-surface/20 transition-colors cursor-pointer group/link relative">
-           <div className="absolute inset-0 bg-stripe-pattern opacity-5"></div>
-          <span className="text-4xl font-display font-bold text-textMuted group-hover/link:text-accent">+</span>
-          <span className="font-mono text-xs text-textMuted mt-2 uppercase tracking-widest group-hover/link:text-textMain">View All</span>
+      <Link to="/certs" className="flex-shrink-0 w-[140px] sm:w-[150px] bg-black border-r border-border flex flex-col justify-center items-center hover:bg-[#0a0a0a] active:bg-[#121212] transition-colors cursor-pointer group/link relative">
+          <span className="text-3xl sm:text-4xl font-display font-bold text-textMuted group-hover/link:text-accent">+</span>
+          <span className="font-mono text-[10px] sm:text-xs text-textMuted mt-2 uppercase tracking-widest group-hover/link:text-textMain">View All</span>
       </Link>
-    </>
+    </div>
   );
 
   return (
-    <div className="relative w-full border-b border-border bg-surface/5 overflow-hidden">
-      {/* Background Stripes */}
-      <div className="absolute top-0 right-0 w-64 h-full bg-stripe-pattern opacity-10 pointer-events-none"></div>
-
-      <div className="px-6 py-4 flex justify-between items-center border-b border-border bg-background relative z-10">
+    <div className="relative w-full border-b border-border bg-black overflow-hidden">
+      <div className="px-4 sm:px-6 py-3 sm:py-3.5 flex justify-between items-center border-b border-border bg-black relative z-10">
         <div className="flex items-center gap-2 text-accent">
             <Hash size={14} />
-            <span className="font-mono text-xs uppercase tracking-widest">Sys_Certifications // Module_View</span>
+            <span className="font-mono text-xs uppercase tracking-widest font-bold">Sys_Certifications // Module_View</span>
+            <span className="text-[10px] text-accent/60 font-mono hidden sm:inline-block">[ ⌖ ]</span>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="w-16 h-2 text-accent/40 tech-barcode hidden sm:block"></div>
+          <span className="text-[10px] font-mono text-accent/60 tracking-wider">XXXXXXXX</span>
         </div>
       </div>
 
-      <div className="flex overflow-hidden bg-border group">
-        <div className="flex w-max flex-shrink-0 animate-marquee group-hover:[animation-play-state:paused] gap-px pr-px">
+      {/* Seamless 2-set Marquee on Solid Black with Slow Smooth Speed */}
+      <div className="flex overflow-hidden bg-black group touch-scroll">
+        <div className="flex w-max flex-shrink-0 animate-marquee-slow">
           {content}
-        </div>
-        <div className="flex w-max flex-shrink-0 animate-marquee group-hover:[animation-play-state:paused] gap-px pr-px" aria-hidden="true">
-          {content}
-        </div>
-        <div className="flex w-max flex-shrink-0 animate-marquee group-hover:[animation-play-state:paused] gap-px pr-px" aria-hidden="true">
-          {content}
-        </div>
-        <div className="flex w-max flex-shrink-0 animate-marquee group-hover:[animation-play-state:paused] gap-px pr-px" aria-hidden="true">
           {content}
         </div>
       </div>

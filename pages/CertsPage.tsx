@@ -45,7 +45,7 @@ export const CertsPage: React.FC = () => {
                                 placeholder="SEARCH QUERY..." 
                                 value={filter}
                                 onChange={(e) => setFilter(e.target.value)}
-                                className="w-full md:w-64 bg-surface/50 border border-border pl-10 pr-4 py-2 text-textMain focus:border-accent focus:outline-none focus:bg-surface placeholder-textMuted/50 uppercase transition-colors"
+                                className="w-full md:w-64 bg-black border border-border pl-10 pr-4 py-2 text-textMain focus:border-accent focus:outline-none placeholder-textMuted/50 uppercase transition-colors"
                             />
                         </div>
                      </div>
@@ -55,19 +55,19 @@ export const CertsPage: React.FC = () => {
             <div className="max-w-[1920px] mx-auto p-6 md:p-12 mt-12 md:mt-8">
                 {/* Stats Row */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                    <div className="p-4 border border-border bg-surface/5">
+                    <div className="p-4 border border-border bg-black">
                         <div className="text-xs text-textMuted uppercase tracking-widest mb-1">Total Licenses</div>
                         <div className="text-2xl md:text-3xl font-display font-bold text-textMain">{CERTIFICATIONS.length}</div>
                     </div>
-                    <div className="p-4 border border-border bg-surface/5">
+                    <div className="p-4 border border-border bg-black">
                         <div className="text-xs text-textMuted uppercase tracking-widest mb-1">Verified Active</div>
                         <div className="text-2xl md:text-3xl font-display font-bold text-accent">100%</div>
                     </div>
-                     <div className="p-4 border border-border bg-surface/5">
+                     <div className="p-4 border border-border bg-black">
                         <div className="text-xs text-textMuted uppercase tracking-widest mb-1">Last Audit</div>
                         <div className="text-2xl md:text-3xl font-display font-bold text-textMain">24H</div>
                     </div>
-                     <div className="p-4 border border-border bg-surface/5">
+                     <div className="p-4 border border-border bg-black">
                         <div className="text-xs text-textMuted uppercase tracking-widest mb-1">Compliance</div>
                         <div className="text-2xl md:text-3xl font-display font-bold text-textMain">AAA</div>
                     </div>
@@ -78,19 +78,26 @@ export const CertsPage: React.FC = () => {
                     {filteredCerts.map((cert, index) => (
                         <div 
                             key={index} 
-                            className="bg-background border border-border p-8 relative group hover:border-accent transition-all duration-300 overflow-hidden flex flex-col h-full hover:shadow-[0_0_30px_rgba(76,169,255,0.1)]"
+                            className="bg-black border border-border p-8 relative group hover:border-accent transition-all duration-300 overflow-hidden flex flex-col h-full hover:shadow-[0_0_30px_rgba(76,169,255,0.1)]"
                         >
-                             {/* Technical Stripe Background */}
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-stripe-pattern opacity-5 pointer-events-none group-hover:opacity-10 transition-opacity"></div>
+                            {/* Card Accent Top Line */}
+                            <div className="absolute top-0 left-0 w-full h-1 bg-accent/20 group-hover:bg-accent transition-colors"></div>
                             
-                            <div className="flex justify-between items-start mb-8 relative z-10">
-                                 <div className="font-mono text-[10px] text-accent uppercase tracking-widest border border-accent/20 px-2 py-1 bg-accent/5 backdrop-blur-sm">
-                                    {cert.issuer}
+                            <div className="flex items-start justify-between mb-8 relative z-10">
+                                <div>
+                                    <div className="text-xs font-mono text-accent uppercase tracking-widest mb-1 flex items-center gap-2">
+                                        <Hash size={12} /> ID: CERT-0{index + 1}
+                                    </div>
+                                    <div className="text-sm font-mono text-textMuted uppercase">
+                                        {cert.issuer}
+                                    </div>
                                 </div>
-                                <Award className="text-border group-hover:text-accent transition-colors" size={24} />
+                                <div className="p-2 border border-border group-hover:border-accent group-hover:bg-accent/10 transition-colors">
+                                    <Award className="text-accent" size={24} />
+                                </div>
                             </div>
-                            
-                            <h3 className="text-2xl md:text-3xl font-display font-bold text-textMain mb-4 group-hover:text-white transition-colors leading-[0.9] uppercase flex-grow relative z-10">
+
+                            <h3 className="font-display font-bold text-2xl md:text-3xl text-textMain uppercase leading-tight mb-4 group-hover:text-accent transition-colors">
                                 {cert.name}
                             </h3>
                             

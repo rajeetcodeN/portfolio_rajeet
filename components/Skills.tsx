@@ -39,75 +39,34 @@ const itemVariants = {
 
 export const Skills: React.FC = () => {
   return (
-    <Section id="skills" title="Tech Specs" className="bg-background">
+    <Section id="skills" title="Tech Specs" className="bg-black">
       <motion.div 
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 bg-black"
       >
         {SKILL_GROUPS.map((group, index) => (
           <motion.div 
             key={group.category}
             variants={itemVariants}
-            whileHover="cardHover"
             className={`
-              p-6 md:p-8 border-b border-border 
+              p-6 md:p-8 border-b border-border bg-black hover:bg-[#070707] transition-colors
               ${index % 3 !== 2 ? 'lg:border-r' : ''} 
               ${index % 2 !== 1 ? 'md:border-r lg:border-r-0' : ''}
               min-h-[240px] flex flex-col
               group relative overflow-hidden
             `}
           >
-            {/* Accent gradient wash slides in on hover */}
-            <motion.div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: 'linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent 55%)',
-              }}
-              variants={{
-                cardHover: { opacity: 1, x: 0 },
-              }}
-              initial={{ opacity: 0, x: '-100%' }}
-              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            />
-
-            {/* Accent edge glow */}
-            <motion.div
-              className="absolute inset-0 pointer-events-none"
-              style={{ boxShadow: 'inset 0 0 40px color-mix(in srgb, var(--color-accent) 7%, transparent)' }}
-              variants={{ cardHover: { opacity: 1 } }}
-              initial={{ opacity: 0 }}
-              transition={{ duration: 0.4 }}
-            />
-              
-            {/* Active Grid Scan on Hover */}
-            <div className="absolute inset-0 bg-grid-pattern opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none animate-grid-scroll"></div>
-            
-            {/* Corner Scanlines */}
-            <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
             <div className="relative z-10">
                 <div className="flex justify-between items-start mb-6">
                     <div className="flex items-center gap-3">
-                      <motion.div
-                        className="p-2 bg-surface border border-border shrink-0"
-                        variants={{
-                          cardHover: {
-                            borderColor: 'var(--color-accent)',
-                            backgroundColor: 'color-mix(in srgb, var(--color-accent) 12%, #121212)',
-                            rotate: -4,
-                            scale: 1.08,
-                          },
-                        }}
-                        transition={{ type: 'spring', stiffness: 260, damping: 18 }}
-                      >
+                      <div className="p-2 bg-[#0a0a0a] border border-border shrink-0 group-hover:border-accent transition-colors">
                         <span className="text-textMuted group-hover:text-accent transition-colors inline-flex">
                           {getIcon(group.category)}
                         </span>
-                      </motion.div>
+                      </div>
                       <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-textMain uppercase tracking-tight group-hover:text-accent transition-colors">
                         {group.category}
                       </h3>
@@ -121,20 +80,16 @@ export const Skills: React.FC = () => {
                 {group.skills.map((skill) => (
                     <motion.div 
                       key={skill} 
-                      whileHover={{ x: 8 }}
+                      whileHover={{ x: 6 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                       className="flex items-center gap-3 cursor-default"
                     >
-                        <motion.div
-                          className="h-1.5 w-1.5 bg-textMuted"
-                          whileHover={{ scale: 2 }}
-                          style={{ willChange: 'transform' }}
-                        />
-                        <span className="font-mono text-sm text-textMuted hover:text-accent transition-colors tracking-wide">
+                        <div className="h-1.5 w-1.5 bg-textMuted group-hover:bg-accent transition-colors" />
+                        <span className="font-mono text-sm text-textMuted group-hover:text-textMain transition-colors tracking-wide">
                             {skill.toUpperCase()}
                         </span>
                         {/* Dot leader for print look */}
-                        <div className="flex-grow border-b border-dotted border-border opacity-30"></div>
+                        <div className="flex-grow border-b border-dotted border-border opacity-20"></div>
                     </motion.div>
                 ))}
                 </div>
@@ -142,15 +97,26 @@ export const Skills: React.FC = () => {
           </motion.div>
         ))}
         
-        {/* Decorative Filler - Technical Empty State */}
+        {/* Decorative Filler - Technical Wireframe HUD Module */}
         <motion.div 
           variants={itemVariants}
-          className="hidden lg:flex p-6 md:p-8 border-b border-border items-center justify-center bg-surface/10 opacity-50 relative overflow-hidden"
+          className="hidden lg:flex p-6 md:p-8 border-b border-border items-center justify-center bg-black relative overflow-hidden group"
         >
-             <div className="absolute inset-0 bg-stripe-pattern opacity-5"></div>
-            <div className="text-center relative z-10">
-                <div className="text-6xl font-display font-bold text-border">NULL</div>
-                <div className="font-mono text-xs text-border mt-2">// AWAITING DATA</div>
+            <div className="text-center relative z-10 font-mono">
+                <div className="flex justify-center mb-3">
+                  {/* Isometric Cube Wireframe Accent */}
+                  <div className="w-12 h-12 border border-accent/40 rotate-45 flex items-center justify-center relative shadow-[0_0_15px_rgba(76,169,255,0.15)] group-hover:rotate-90 transition-transform duration-700">
+                    <div className="w-6 h-6 border border-accent/60"></div>
+                    <span className="absolute text-[8px] text-accent">✦</span>
+                  </div>
+                </div>
+                <div className="text-sm font-display font-bold text-white uppercase tracking-widest">
+                  SYS_TELEMETRY // OK
+                </div>
+                <div className="font-mono text-[9px] text-textMuted mt-1 flex items-center justify-center gap-2">
+                  <span>[ + ] LATENCY &lt; 200MS</span>
+                  <div className="w-8 h-2 text-accent/40 tech-barcode"></div>
+                </div>
             </div>
         </motion.div>
       </motion.div>

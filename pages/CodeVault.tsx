@@ -20,10 +20,10 @@ export const CodeVault: React.FC = () => {
                 </div>
              </div>
 
-             <div className="grid grid-cols-1 lg:grid-cols-12 border border-border bg-[#0D0D0D] min-h-[600px] shadow-2xl">
+             <div className="grid grid-cols-1 lg:grid-cols-12 border border-border bg-black min-h-[600px] shadow-2xl">
                 {/* Sidebar Explorer - Stacked on Mobile with Max Height */}
-                <div className="lg:col-span-3 border-b lg:border-b-0 lg:border-r border-border bg-surface/5 p-4 md:p-6 max-h-[200px] lg:max-h-none overflow-y-auto">
-                    <div className="font-mono text-xs text-textMuted uppercase tracking-widest mb-4 md:mb-6 flex items-center gap-2 sticky top-0 bg-[#161616] py-2 z-10">
+                <div className="lg:col-span-3 border-b lg:border-b-0 lg:border-r border-border bg-black p-4 md:p-6 max-h-[200px] lg:max-h-none overflow-y-auto">
+                    <div className="font-mono text-xs text-textMuted uppercase tracking-widest mb-4 md:mb-6 flex items-center gap-2 sticky top-0 bg-[#0a0a0a] py-2 z-10">
                         <Folder size={14} /> Root/Modules
                     </div>
                     <div className="space-y-1">
@@ -31,7 +31,7 @@ export const CodeVault: React.FC = () => {
                             <button
                                 key={snippet.id}
                                 onClick={() => setActiveSnippetId(snippet.id)}
-                                className={`w-full text-left px-3 py-2 font-mono text-xs flex items-center gap-2 transition-colors ${activeSnippetId === snippet.id ? 'bg-accent text-background font-bold' : 'text-textMuted hover:text-textMain hover:bg-white/5'}`}
+                                className={`w-full text-left px-3 py-2 font-mono text-xs flex items-center gap-2 transition-colors ${activeSnippetId === snippet.id ? 'bg-accent text-background font-bold' : 'text-textMuted hover:text-textMain hover:bg-[#0a0a0a]'}`}
                             >
                                 <FileCode size={14} />
                                 {snippet.filename}
@@ -41,10 +41,10 @@ export const CodeVault: React.FC = () => {
                 </div>
 
                 {/* Main Code View */}
-                <div className="lg:col-span-9 flex flex-col min-h-[400px]">
+                <div className="lg:col-span-9 flex flex-col min-h-[400px] bg-black">
                     {/* Tab Bar */}
-                    <div className="flex items-center border-b border-border bg-surface/5">
-                        <div className="px-6 py-3 border-r border-border bg-[#0D0D0D] text-textMain font-mono text-xs flex items-center gap-2">
+                    <div className="flex items-center border-b border-border bg-black">
+                        <div className="px-6 py-3 border-r border-border bg-black text-textMain font-mono text-xs flex items-center gap-2">
                              <div className="w-2 h-2 bg-accent rounded-full"></div>
                              {activeSnippet.filename}
                         </div>
@@ -71,7 +71,7 @@ export const CodeVault: React.FC = () => {
                     </div>
 
                     {/* Status Bar */}
-                    <div className="border-t border-border bg-surface/5 px-4 py-2 flex justify-between font-mono text-[10px] text-textMuted uppercase tracking-widest">
+                    <div className="border-t border-border bg-black px-4 py-2 flex justify-between font-mono text-[10px] text-textMuted uppercase tracking-widest">
                         <div className="flex gap-4">
                             <span>Ln {activeSnippet.code.split('\n').length}, Col 0</span>
                             <span className="hidden md:inline">UTF-8</span>

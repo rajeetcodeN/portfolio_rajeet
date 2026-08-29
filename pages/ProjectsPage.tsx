@@ -80,7 +80,7 @@ export const ProjectsPage: React.FC = () => {
                                 
                                 <div className="flex flex-wrap gap-2 mt-auto">
                                     {project.stack.map(tech => (
-                                        <span key={tech} className="text-[10px] font-mono uppercase px-2 py-1 bg-surface border border-border text-textMuted group-hover:text-accent transition-colors">
+                                        <span key={tech} className="text-[10px] font-mono uppercase px-2 py-1 bg-[#0a0a0a] border border-border text-textMuted group-hover:text-accent transition-colors">
                                             {tech}
                                         </span>
                                     ))}
@@ -97,7 +97,7 @@ export const ProjectsPage: React.FC = () => {
 
                                 <div className="flex flex-col gap-3 mt-12">
                                     {project.demoUrl && (
-                                        <a href={project.demoUrl} className="flex items-center justify-between px-6 py-4 bg-surface border border-border text-textMain font-display font-bold text-lg uppercase hover:bg-accent hover:border-accent hover:text-background transition-colors">
+                                        <a href={project.demoUrl} className="flex items-center justify-between px-6 py-4 bg-[#0a0a0a] border border-border text-textMain font-display font-bold text-lg uppercase hover:bg-accent hover:border-accent hover:text-background transition-colors">
                                             <span>Deploy View</span> <ExternalLink size={18} />
                                         </a>
                                     )}
